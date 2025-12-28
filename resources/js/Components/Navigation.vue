@@ -17,25 +17,174 @@
 
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a v-for="link in navLinks" :key="link.name"
-                           :href="link.href"
-                           :class="[
-                               'relative text-gray-700 hover:text-audiogold-600 transition-all duration-300 font-medium pb-1',
-                               isActive(link.href) ? 'text-audiogold-600' : ''
-                           ]">
-                            {{ link.name }}
-                            <span
-                                :class="[
-                                    'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-audiogold-500 to-audiogold-700 transition-all duration-300',
-                                    isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
-                                ]"
-                            ></span>
-                            <span
-                                v-if="!isActive(link.href)"
-                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-audiogold-500 to-audiogold-700 hover:w-full transition-all duration-300 group-hover:w-full"
-                            ></span>
+                        <template v-for="link in navLinks" :key="link.name">
+                            <!-- Products with Mega Menu -->
+                            <div v-if="link.name === 'Products'"
+                                 class="relative group"
+                                 @mouseenter="showMegaMenu = true"
+                                 @mouseleave="showMegaMenu = false">
+                                <a :href="link.href"
+                                   :class="[
+                                       'relative text-gray-700 hover:text-audiogold-600 transition-all duration-300 font-medium pb-1 flex items-center space-x-1',
+                                       isActive(link.href) ? 'text-audiogold-600' : ''
+                                   ]">
+                                    <span>{{ link.name }}</span>
+                                    <svg class="w-4 h-4 transition-transform duration-300"
+                                         :class="showMegaMenu ? 'rotate-180' : ''"
+                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                    <span
+                                        :class="[
+                                            'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-audiogold-500 to-audiogold-700 transition-all duration-300',
+                                            isActive(link.href) || showMegaMenu ? 'w-full' : 'w-0 group-hover:w-full'
+                                        ]"
+                                    ></span>
+                                </a>
+                            </div>
+                            <!-- Other Links -->
+                            <a v-else
+                               :href="link.href"
+                               :class="[
+                                   'relative text-gray-700 hover:text-audiogold-600 transition-all duration-300 font-medium pb-1',
+                                   isActive(link.href) ? 'text-audiogold-600' : ''
+                               ]">
+                                {{ link.name }}
+                                <span
+                                    :class="[
+                                        'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-audiogold-500 to-audiogold-700 transition-all duration-300',
+                                        isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                                    ]"
+                                ></span>
+                                <span
+                                    v-if="!isActive(link.href)"
+                                    class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-audiogold-500 to-audiogold-700 hover:w-full transition-all duration-300 group-hover:w-full"
+                                ></span>
+                            </a>
+                        </template>
+
+                        <!-- CTA Button -->
+                        <a href="/contact"
+                           class="relative group px-6 py-2.5 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                            <span class="relative z-10 flex items-center space-x-2">
+                                <span>Get Quote</span>
+                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-audiogold-600 to-audiogold-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </a>
                     </div>
+
+                    <!-- Mega Menu -->
+                    <Transition
+                        enter-active-class="transition-all duration-300 ease-out"
+                        enter-from-class="opacity-0 -translate-y-4"
+                        enter-to-class="opacity-100 translate-y-0"
+                        leave-active-class="transition-all duration-200 ease-in"
+                        leave-from-class="opacity-100 translate-y-0"
+                        leave-to-class="opacity-0 -translate-y-4"
+                    >
+                        <div v-if="showMegaMenu"
+                             @mouseenter="showMegaMenu = true"
+                             @mouseleave="showMegaMenu = false"
+                             class="absolute left-0 right-0 top-full mt-0 bg-white border-t border-b border-audiogold-200/50 shadow-2xl">
+                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                                <div class="grid grid-cols-3 gap-8">
+                                    <!-- Booster Amplifiers -->
+                                    <a href="/products/booster-amplifiers"
+                                       class="group p-6 rounded-2xl hover:bg-gradient-to-br hover:from-audiogold-50 hover:to-audiogold-100 transition-all duration-300 border border-transparent hover:border-audiogold-200 hover:shadow-lg">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1">
+                                                <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-audiogold-600 transition-colors duration-300">
+                                                    Booster Amplifiers
+                                                </h3>
+                                                <p class="text-sm text-gray-600 mb-2">High-gain amplification for weak signals</p>
+                                                <span class="inline-flex items-center text-xs font-semibold text-audiogold-600">
+                                                    14 Models
+                                                    <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <!-- Mixer Amplifiers -->
+                                    <a href="/products/mixer-amplifiers"
+                                       class="group p-6 rounded-2xl hover:bg-gradient-to-br hover:from-audiogold-50 hover:to-audiogold-100 transition-all duration-300 border border-transparent hover:border-audiogold-200 hover:shadow-lg">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1">
+                                                <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-audiogold-600 transition-colors duration-300">
+                                                    Mixer Amplifiers
+                                                </h3>
+                                                <p class="text-sm text-gray-600 mb-2">Combine audio sources and output together</p>
+                                                <span class="inline-flex items-center text-xs font-semibold text-audiogold-600">
+                                                    10 Models
+                                                    <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <!-- Power Amplifiers -->
+                                    <div class="group p-6 rounded-2xl hover:bg-gradient-to-br hover:from-audiogold-50 hover:to-audiogold-100 transition-all duration-300 border border-transparent hover:border-audiogold-200 hover:shadow-lg">
+                                        <div class="flex items-start space-x-4 mb-4">
+                                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1">
+                                                <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-audiogold-600 transition-colors duration-300">
+                                                    Power Amplifiers
+                                                </h3>
+                                                <p class="text-sm text-gray-600 mb-3">Strong output with efficiency</p>
+                                            </div>
+                                        </div>
+                                        <!-- Subcategories -->
+                                        <div class="pl-16 space-y-2">
+                                            <a href="/products/power-amplifiers/class-ab" class="flex items-center justify-between group/sub hover:translate-x-2 transition-transform duration-200">
+                                                <span class="text-sm text-gray-700 group-hover/sub:text-audiogold-600 font-medium">Class AB</span>
+                                                <span class="text-xs text-gray-500">45 models</span>
+                                            </a>
+                                            <a href="/products/power-amplifiers/class-h" class="flex items-center justify-between group/sub hover:translate-x-2 transition-transform duration-200">
+                                                <span class="text-sm text-gray-700 group-hover/sub:text-audiogold-600 font-medium">Class H</span>
+                                                <span class="text-xs text-gray-500">6 models</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom CTA -->
+                                <div class="mt-6 pt-6 border-t border-audiogold-200/50">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm text-gray-600">
+                                            Not sure which amplifier is right for you?
+                                        </p>
+                                        <a href="/contact" class="inline-flex items-center text-sm font-semibold text-audiogold-600 hover:text-audiogold-700 group">
+                                            Talk to our experts
+                                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Transition>
 
                     <!-- Mobile menu button -->
                     <div class="md:hidden">
@@ -124,6 +273,18 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </a>
+
+                    <!-- Mobile CTA Button -->
+                    <a
+                        href="/contact"
+                        @click="mobileMenuOpen = false"
+                        class="mt-4 flex items-center justify-center px-6 py-3 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    >
+                        <span>Get Quote</span>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- Footer Section -->
@@ -166,6 +327,7 @@ import { ref } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 
 const mobileMenuOpen = ref(false);
+const showMegaMenu = ref(false);
 const page = usePage();
 
 const navLinks = [
