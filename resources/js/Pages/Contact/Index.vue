@@ -1,0 +1,259 @@
+<template>
+    <Head title="Contact Us - AudioGold" />
+
+    <MainLayout>
+        <!-- Background slot -->
+        <template #background>
+            <AnimatedBackground />
+        </template>
+
+        <!-- Hero Header -->
+        <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto text-center">
+                <div class="inline-block mb-4">
+                    <span class="text-sm font-semibold text-audiogold-600 tracking-wider uppercase">Get in touch</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
+                        Contact Us
+                    </span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
+                    Have a question? Fill out the form below, and we'll get back to you within 24 hours.
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-audiogold-500 to-audiogold-700 mx-auto rounded-full"></div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="group backdrop-blur-md bg-white/60 rounded-3xl p-8 md:p-10 shadow-2xl border border-white/50 hover:shadow-3xl hover:bg-white/70 transition-all duration-500">
+                        <div class="mb-8">
+                            <h2 class="text-3xl font-bold text-gray-800 mb-2">Send us a Message</h2>
+                            <p class="text-gray-600">We're here to help and answer any question you might have</p>
+                        </div>
+
+                        <form @submit.prevent="submitForm" class="space-y-6">
+                            <div class="group/input">
+                                <label for="firstName" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    First Name <span class="text-audiogold-600">*</span>
+                                </label>
+                                <input
+                                    v-model="form.firstName"
+                                    type="text"
+                                    id="firstName"
+                                    required
+                                    class="w-full px-4 py-3 rounded-xl border-2 border-audiogold-200 focus:border-audiogold-500 focus:ring-4 focus:ring-audiogold-200 outline-none transition-all duration-300 bg-white/80 hover:bg-white hover:shadow-md"
+                                    placeholder="Enter your first name"
+                                />
+                            </div>
+
+                            <div class="group/input">
+                                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Email Address <span class="text-audiogold-600">*</span>
+                                </label>
+                                <input
+                                    v-model="form.email"
+                                    type="email"
+                                    id="email"
+                                    required
+                                    class="w-full px-4 py-3 rounded-xl border-2 border-audiogold-200 focus:border-audiogold-500 focus:ring-4 focus:ring-audiogold-200 outline-none transition-all duration-300 bg-white/80 hover:bg-white hover:shadow-md"
+                                    placeholder="your.email@example.com"
+                                />
+                            </div>
+
+                            <div class="group/input">
+                                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Phone Number
+                                </label>
+                                <input
+                                    v-model="form.phone"
+                                    type="tel"
+                                    id="phone"
+                                    class="w-full px-4 py-3 rounded-xl border-2 border-audiogold-200 focus:border-audiogold-500 focus:ring-4 focus:ring-audiogold-200 outline-none transition-all duration-300 bg-white/80 hover:bg-white hover:shadow-md"
+                                    placeholder="+91 1234567890"
+                                />
+                            </div>
+
+                            <div class="group/input">
+                                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Message
+                                </label>
+                                <textarea
+                                    v-model="form.message"
+                                    id="message"
+                                    rows="4"
+                                    maxlength="180"
+                                    class="w-full px-4 py-3 rounded-xl border-2 border-audiogold-200 focus:border-audiogold-500 focus:ring-4 focus:ring-audiogold-200 outline-none transition-all duration-300 bg-white/80 hover:bg-white hover:shadow-md resize-none"
+                                    placeholder="Enter your message..."
+                                ></textarea>
+                                <div class="flex justify-between items-center mt-2">
+                                    <p class="text-sm text-gray-500">{{ form.message.length }} / 180</p>
+                                    <p v-if="form.message.length >= 180" class="text-sm text-audiogold-600 font-semibold">Maximum length reached</p>
+                                </div>
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="group/btn w-full px-8 py-4 bg-gradient-to-r from-audiogold-600 to-audiogold-700 text-white rounded-2xl font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                            >
+                                Send Message
+                                <svg class="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="space-y-6">
+                        <div class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl hover:bg-white/70 transition-all duration-500">
+                            <h2 class="text-3xl font-bold mb-6">
+                                <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
+                                    Get In Touch
+                                </span>
+                            </h2>
+
+                            <div class="space-y-6">
+                                <!-- Email -->
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                    <div class="flex-shrink-0">
+                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
+                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700 mb-1">Mail ID</p>
+                                        <a href="mailto:shivamelectronics7@gmail.com" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200 break-all">
+                                            shivamelectronics7@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                    <div class="flex-shrink-0">
+                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
+                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700 mb-1">Contact</p>
+                                        <a href="tel:+917011651721" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200">
+                                            +91 7011651721
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- WhatsApp -->
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                    <div class="flex-shrink-0">
+                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
+                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700 mb-1">WhatsApp</p>
+                                        <a href="https://wa.me/917011651721" target="_blank" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200">
+                                            +91 7011651721
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Timing -->
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                    <div class="flex-shrink-0">
+                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
+                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700 mb-1">Timing</p>
+                                        <p class="text-gray-600">Monday to Saturday</p>
+                                        <p class="text-gray-600">9:00 AM – 6:00 PM</p>
+                                    </div>
+                                </div>
+
+                                <!-- Address -->
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                    <div class="flex-shrink-0">
+                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
+                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700 mb-1">Address</p>
+                                        <p class="text-gray-600">A-64 Roop nagar industrial area<br>Loni Ghaziabad</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-50 to-audiogold-100 rounded-2xl p-6 text-center border border-audiogold-200/50 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                <p class="text-2xl font-bold text-audiogold-700">24hrs</p>
+                                <p class="text-sm text-gray-600">Response Time</p>
+                            </div>
+
+                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-50 to-audiogold-100 rounded-2xl p-6 text-center border border-audiogold-200/50 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/>
+                                    </svg>
+                                </div>
+                                <p class="text-2xl font-bold text-audiogold-700">24/7</p>
+                                <p class="text-sm text-gray-600">Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </MainLayout>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { Head } from '@inertiajs/vue3';
+import MainLayout from '@/Layouts/MainLayout.vue';
+import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
+
+const form = ref({
+    firstName: '',
+    email: '',
+    phone: '',
+    message: ''
+});
+
+const submitForm = () => {
+    // Handle form submission
+    console.log('Form submitted:', form.value);
+    alert('Thank you for your message! We will get back to you within 24 hours.');
+    // Reset form
+    form.value = {
+        firstName: '',
+        email: '',
+        phone: '',
+        message: ''
+    };
+};
+</script>
