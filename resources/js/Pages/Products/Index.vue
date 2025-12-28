@@ -27,29 +27,33 @@
             <!-- Categories Section -->
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div v-for="(category, index) in categories" :key="index"
-                         class="backdrop-blur-md bg-white/60 rounded-3xl shadow-xl border border-audiogold-200/50 overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
-                        <!-- Category Header -->
-                        <div class="relative h-48 bg-gradient-to-br from-audiogold-400 to-audiogold-600 overflow-hidden">
-                            <div class="absolute inset-0 bg-black/10"></div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                                    <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                        <path :d="category.icon"/>
-                                    </svg>
+                    <a v-for="(category, index) in categories" :key="index"
+                       :href="category.link"
+                       class="backdrop-blur-md bg-white/60 rounded-3xl shadow-xl border border-audiogold-200/50 overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
+                        <!-- Category Image Container -->
+                        <div class="relative h-64 bg-gradient-to-br from-audiogold-50 to-audiogold-100 overflow-hidden">
+                            <!-- Placeholder for real amplifier image -->
+                            <div class="absolute inset-0 flex items-center justify-center bg-white">
+                                <!-- This will be replaced with actual image -->
+                                <div class="text-center p-8">
+                                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-audiogold-400 to-audiogold-600 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path :d="category.icon"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-sm text-gray-400 font-medium">Product Image</div>
                                 </div>
+                                <!-- Uncomment below when you have real images -->
+                                <!-- <img :src="category.image" :alt="category.name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /> -->
                             </div>
-                            <!-- Animated gradient overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-audiogold-700/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <!-- Gradient overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
 
                         <!-- Category Content -->
                         <div class="p-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-2xl font-bold text-gray-800">{{ category.name }}</h3>
-                                <span class="px-3 py-1 bg-audiogold-100 text-audiogold-700 rounded-full text-sm font-semibold">
-                                    Coming Soon
-                                </span>
+                            <div class="mb-4">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ category.name }}</h3>
                             </div>
                             <p class="text-gray-600 leading-relaxed mb-6">{{ category.description }}</p>
 
@@ -67,17 +71,17 @@
                             </div>
 
                             <!-- CTA Button -->
-                            <button class="w-full py-3 px-6 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-xl font-semibold hover:from-audiogold-600 hover:to-audiogold-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group/btn">
+                            <div class="w-full py-3 px-6 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-xl font-semibold hover:from-audiogold-600 hover:to-audiogold-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group/btn">
                                 <span>Explore {{ category.name }}</span>
                                 <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                                 </svg>
-                            </button>
+                            </div>
                         </div>
 
                         <!-- Hover Border Effect -->
                         <div class="absolute inset-0 rounded-3xl border-2 border-audiogold-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                    </div>
+                    </a>
                 </div>
             </section>
 
@@ -198,6 +202,7 @@ const categories = [
         name: 'Booster Amplifiers',
         description: 'High-gain amplification for weak signals',
         icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+        link: '/products/booster-amplifiers',
         features: [
             'Ultra-low noise floor',
             'Wide frequency response',
@@ -210,6 +215,7 @@ const categories = [
         name: 'Mixer Amplifiers',
         description: 'Combine audio sources and output together',
         icon: 'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
+        link: '/products/mixer-amplifiers',
         features: [
             'Multiple input channels',
             'Independent volume controls',
@@ -222,6 +228,7 @@ const categories = [
         name: 'Power Amplifiers',
         description: 'Deliver strong output to speakers efficiently',
         icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
+        link: '/products/power-amplifiers',
         features: [
             'High wattage output',
             'Exceptional efficiency',

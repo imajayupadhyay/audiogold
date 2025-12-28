@@ -13,6 +13,34 @@ Route::get('/products', function () {
     return Inertia::render('Products/Index');
 })->name('products');
 
+Route::get('/products/booster-amplifiers', function () {
+    return Inertia::render('Products/Category', [
+        'category' => 'booster-amplifiers'
+    ]);
+})->name('products.booster');
+
+Route::get('/products/mixer-amplifiers', function () {
+    return Inertia::render('Products/Category', [
+        'category' => 'mixer-amplifiers'
+    ]);
+})->name('products.mixer');
+
+Route::get('/products/power-amplifiers', function () {
+    return Inertia::render('Products/PowerAmplifiers');
+})->name('products.power');
+
+Route::get('/products/power-amplifiers/class-ab', function () {
+    return Inertia::render('Products/Category', [
+        'category' => 'class-ab'
+    ]);
+})->name('products.power.class-ab');
+
+Route::get('/products/power-amplifiers/class-h', function () {
+    return Inertia::render('Products/Category', [
+        'category' => 'class-h'
+    ]);
+})->name('products.power.class-h');
+
 Route::get('/contact', function () {
     return Inertia::render('Contact/Index');
 })->name('contact');
