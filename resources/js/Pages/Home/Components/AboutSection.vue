@@ -1,5 +1,5 @@
 <template>
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-gray-50">
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Section Header -->
             <div class="text-center mb-16 animate-fade-in">

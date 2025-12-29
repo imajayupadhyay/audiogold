@@ -32,20 +32,7 @@
                        class="backdrop-blur-md bg-white/60 rounded-3xl shadow-xl border border-audiogold-200/50 overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
                         <!-- Category Image Container -->
                         <div class="relative h-64 bg-gradient-to-br from-audiogold-50 to-audiogold-100 overflow-hidden">
-                            <!-- Placeholder for real amplifier image -->
-                            <div class="absolute inset-0 flex items-center justify-center bg-white">
-                                <!-- This will be replaced with actual image -->
-                                <div class="text-center p-8">
-                                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-audiogold-400 to-audiogold-600 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path :d="category.icon"/>
-                                        </svg>
-                                    </div>
-                                    <div class="text-sm text-gray-400 font-medium">Product Image</div>
-                                </div>
-                                <!-- Uncomment below when you have real images -->
-                                <!-- <img :src="category.image" :alt="category.name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /> -->
-                            </div>
+                            <img :src="category.image" :alt="category.name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                             <!-- Gradient overlay -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
@@ -202,6 +189,7 @@ const categories = [
         name: 'Booster Amplifiers',
         description: 'High-gain amplification for weak signals',
         icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+        image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&h=400&fit=crop',
         link: '/products/booster-amplifiers',
         features: [
             'Ultra-low noise floor',
@@ -215,6 +203,7 @@ const categories = [
         name: 'Mixer Amplifiers',
         description: 'Combine audio sources and output together',
         icon: 'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
+        image: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&h=400&fit=crop',
         link: '/products/mixer-amplifiers',
         features: [
             'Multiple input channels',
@@ -228,6 +217,7 @@ const categories = [
         name: 'Power Amplifiers',
         description: 'Deliver strong output to speakers efficiently',
         icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
+        image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop',
         link: '/products/power-amplifiers',
         features: [
             'High wattage output',

@@ -1,5 +1,5 @@
 <template>
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
         <div class="max-w-7xl mx-auto">
             <!-- Section Header -->
             <div class="text-center mb-16">
