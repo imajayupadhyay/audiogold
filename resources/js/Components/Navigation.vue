@@ -96,8 +96,9 @@
                         </template>
 
                         <!-- CTA Button -->
-                        <a href="/contact"
-                           class="relative group px-6 py-2.5 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                        <button
+                            @click="showQuoteModal = true"
+                            class="relative group px-6 py-2.5 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                             <span class="relative z-10 flex items-center space-x-2">
                                 <span>Get Quote</span>
                                 <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +106,7 @@
                                 </svg>
                             </span>
                             <div class="absolute inset-0 bg-gradient-to-r from-audiogold-600 to-audiogold-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </a>
+                        </button>
                     </div>
 
                     <!-- Mega Menu -->
@@ -312,16 +313,15 @@
                     </a>
 
                     <!-- Mobile CTA Button -->
-                    <a
-                        href="/contact"
-                        @click="mobileMenuOpen = false"
-                        class="mt-4 flex items-center justify-center px-6 py-3 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    <button
+                        @click="mobileMenuOpen = false; showQuoteModal = true"
+                        class="mt-4 flex items-center justify-center px-6 py-3 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full"
                     >
                         <span>Get Quote</span>
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Footer Section -->
@@ -356,15 +356,20 @@
                 </div>
             </div>
         </Transition>
+
+        <!-- Quote Modal -->
+        <QuoteModal :show="showQuoteModal" @close="showQuoteModal = false" />
     </nav>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { usePage } from '@inertiajs/vue3';
+import QuoteModal from '@/Components/QuoteModal.vue';
 
 const mobileMenuOpen = ref(false);
 const showMegaMenu = ref(false);
+const showQuoteModal = ref(false);
 const isScrolled = ref(false);
 const page = usePage();
 

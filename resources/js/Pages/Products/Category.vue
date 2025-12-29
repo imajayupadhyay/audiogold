@@ -27,13 +27,6 @@
             <!-- Hero Section -->
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                 <div class="backdrop-blur-md bg-white/60 rounded-3xl p-12 shadow-xl border border-audiogold-200/50">
-                    <div class="flex items-center justify-center mb-6">
-                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-audiogold-500 to-audiogold-700 flex items-center justify-center shadow-lg">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path :d="categoryData.icon"/>
-                            </svg>
-                        </div>
-                    </div>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6">
                         <span class="block bg-gradient-to-r from-audiogold-600 via-audiogold-700 to-audiogold-800 bg-clip-text text-transparent">
                             {{ categoryData.name }}
