@@ -28,7 +28,7 @@
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-xl border border-audiogold-200/50 hover:shadow-2xl transition-all duration-500 hover:scale-105">
-                        <div class="w-16 h-16 bg-gradient-to-br from-audiogold-500 to-audiogold-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                             <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
                             </svg>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-xl border border-audiogold-200/50 hover:shadow-2xl transition-all duration-500 hover:scale-105">
-                        <div class="w-16 h-16 bg-gradient-to-br from-audiogold-500 to-audiogold-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                             <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                             </svg>
@@ -78,7 +78,10 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <div v-for="(value, index) in values" :key="index"
                          class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-xl border border-audiogold-200/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 group">
-                        <div class="w-16 h-16 bg-gradient-to-br from-audiogold-500 to-audiogold-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:rotate-12 transition-transform duration-300">
+                        <div :class="[
+                            'w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:rotate-12 transition-transform duration-300',
+                            value.gradient
+                        ]">
                             <component :is="'svg'" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path :d="value.icon"/>
                             </component>
@@ -116,8 +119,8 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <div v-for="(member, index) in team" :key="index"
                          class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-xl border border-audiogold-200/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 group text-center">
-                        <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-audiogold-400 to-audiogold-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg group-hover:rotate-6 transition-transform duration-300">
-                            {{ member.initials }}
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300 border-4 border-audiogold-200">
+                            <img :src="member.image" :alt="member.name" class="w-full h-full object-cover" />
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ member.name }}</h3>
                         <p class="text-audiogold-600 font-semibold mb-3">{{ member.role }}</p>
@@ -141,7 +144,10 @@
                             <div class="space-y-4">
                                 <div v-for="(feature, index) in innovations" :key="index"
                                      class="flex items-start space-x-3 group">
-                                    <div class="w-6 h-6 rounded-full bg-audiogold-500 flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-125 transition-transform duration-300">
+                                    <div :class="[
+                                        'w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-125 transition-transform duration-300',
+                                        getInnovationGradient(index)
+                                    ]">
                                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                                         </svg>
@@ -151,21 +157,21 @@
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                <div class="text-3xl font-bold text-audiogold-700 mb-2">50+</div>
-                                <div class="text-audiogold-600 font-semibold">Patents Filed</div>
+                            <div class="backdrop-blur-md bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                                <div class="text-3xl font-bold bg-gradient-to-br from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">50+</div>
+                                <div class="text-gray-700 font-semibold">Patents Filed</div>
                             </div>
-                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                <div class="text-3xl font-bold text-audiogold-700 mb-2">24/7</div>
-                                <div class="text-audiogold-600 font-semibold">Testing Lab</div>
+                            <div class="backdrop-blur-md bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                                <div class="text-3xl font-bold bg-gradient-to-br from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">24/7</div>
+                                <div class="text-gray-700 font-semibold">Testing Lab</div>
                             </div>
-                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                <div class="text-3xl font-bold text-audiogold-700 mb-2">100%</div>
-                                <div class="text-audiogold-600 font-semibold">Quality Tested</div>
+                            <div class="backdrop-blur-md bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                                <div class="text-3xl font-bold bg-gradient-to-br from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">100%</div>
+                                <div class="text-gray-700 font-semibold">Quality Tested</div>
                             </div>
-                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                <div class="text-3xl font-bold text-audiogold-700 mb-2">R&D</div>
-                                <div class="text-audiogold-600 font-semibold">Excellence</div>
+                            <div class="backdrop-blur-md bg-gradient-to-br from-orange-100 to-amber-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                                <div class="text-3xl font-bold bg-gradient-to-br from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">R&D</div>
+                                <div class="text-gray-700 font-semibold">Excellence</div>
                             </div>
                         </div>
                     </div>
@@ -207,32 +213,38 @@ const values = [
     {
         title: 'Quality First',
         description: 'We never compromise on quality. Every component is carefully selected and rigorously tested to ensure peak performance and longevity.',
-        icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+        icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+        gradient: 'bg-gradient-to-br from-green-500 to-emerald-600'
     },
     {
         title: 'Innovation',
         description: 'Continuous research and development drive us forward. We embrace new technologies while respecting timeless audio principles.',
-        icon: 'M13 10V3L4 14h7v7l9-11h-7z'
+        icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+        gradient: 'bg-gradient-to-br from-yellow-500 to-orange-600'
     },
     {
         title: 'Customer Focus',
         description: 'Your satisfaction is our priority. We provide exceptional support, comprehensive warranties, and products designed with your needs in mind.',
-        icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
+        icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+        gradient: 'bg-gradient-to-br from-red-500 to-rose-600'
     },
     {
         title: 'Sustainability',
         description: 'We are committed to environmental responsibility through eco-friendly manufacturing processes and recyclable materials.',
-        icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+        icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+        gradient: 'bg-gradient-to-br from-teal-500 to-cyan-600'
     },
     {
         title: 'Transparency',
         description: 'Honest communication, clear pricing, and authentic reviews. We build trust through openness and integrity in everything we do.',
-        icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
+        icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+        gradient: 'bg-gradient-to-br from-indigo-500 to-purple-600'
     },
     {
         title: 'Community',
         description: 'Building a global community of audio enthusiasts who share knowledge, experiences, and passion for exceptional sound.',
-        icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'
+        icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+        gradient: 'bg-gradient-to-br from-pink-500 to-rose-600'
     }
 ];
 
@@ -247,19 +259,19 @@ const team = [
     {
         name: 'Michael Chen',
         role: 'Founder & CEO',
-        initials: 'MC',
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80',
         bio: 'Audio engineer with 20+ years of experience in amplifier design and a passion for sonic perfection.'
     },
     {
         name: 'Sarah Rodriguez',
         role: 'Chief Technology Officer',
-        initials: 'SR',
+        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&q=80',
         bio: 'Former NASA engineer bringing aerospace-grade precision to audio amplification technology.'
     },
     {
         name: 'David Thompson',
         role: 'Head of Customer Experience',
-        initials: 'DT',
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&q=80',
         bio: 'Dedicated to ensuring every customer receives world-class support and satisfaction.'
     }
 ];
@@ -271,4 +283,15 @@ const innovations = [
     'Eco-friendly power efficiency designs',
     'Modular architecture for easy upgrades'
 ];
+
+const getInnovationGradient = (index) => {
+    const gradients = [
+        'bg-gradient-to-br from-blue-500 to-cyan-600',
+        'bg-gradient-to-br from-purple-500 to-pink-600',
+        'bg-gradient-to-br from-green-500 to-emerald-600',
+        'bg-gradient-to-br from-orange-500 to-amber-600',
+        'bg-gradient-to-br from-red-500 to-rose-600'
+    ];
+    return gradients[index % gradients.length];
+};
 </script>

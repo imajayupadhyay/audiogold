@@ -11,17 +11,25 @@
         <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto text-center">
                 <div class="inline-block mb-4">
-                    <span class="text-sm font-semibold text-audiogold-600 tracking-wider uppercase">Get in touch</span>
+                    <div class="backdrop-blur-sm bg-gradient-to-r from-blue-100 to-cyan-100 border border-blue-200 rounded-full px-6 py-2 shadow-sm">
+                        <p class="text-sm font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent flex items-center gap-2 justify-center">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                            Get in Touch
+                        </p>
+                    </div>
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                        Contact
+                    </span>
+                    <br />
                     <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
-                        Contact Us
+                        AudioGold
                     </span>
                 </h1>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
                     Have a question? Fill out the form below, and we'll get back to you within 24 hours.
                 </p>
-                <div class="w-24 h-1 bg-gradient-to-r from-audiogold-500 to-audiogold-700 mx-auto rounded-full"></div>
             </div>
         </section>
 
@@ -30,10 +38,10 @@
             <div class="max-w-7xl mx-auto">
                 <div class="grid lg:grid-cols-2 gap-12">
                     <!-- Contact Form -->
-                    <div class="group backdrop-blur-md bg-white/60 rounded-3xl p-8 md:p-10 shadow-2xl border border-white/50 hover:shadow-3xl hover:bg-white/70 transition-all duration-500">
+                    <div class="backdrop-blur-md bg-white/80 rounded-3xl p-8 md:p-10 shadow-2xl border border-white/50">
                         <div class="mb-8">
-                            <h2 class="text-3xl font-bold text-gray-800 mb-2">Send us a Message</h2>
-                            <p class="text-gray-600">We're here to help and answer any question you might have</p>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-2">Send us a Message</h2>
+                            <p class="text-gray-700">We're here to help and answer any question you might have</p>
                         </div>
 
                         <form @submit.prevent="submitForm" class="space-y-6">
@@ -110,19 +118,17 @@
 
                     <!-- Contact Information -->
                     <div class="space-y-6">
-                        <div class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl hover:bg-white/70 transition-all duration-500">
-                            <h2 class="text-3xl font-bold mb-6">
-                                <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
-                                    Get In Touch
-                                </span>
+                        <div class="backdrop-blur-md bg-white/80 rounded-3xl p-8 shadow-2xl border border-white/50">
+                            <h2 class="text-3xl font-bold mb-6 text-gray-900">
+                                Contact Information
                             </h2>
 
                             <div class="space-y-6">
                                 <!-- Email -->
-                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-white/60 transition-all duration-300 cursor-pointer">
                                     <div class="flex-shrink-0">
-                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
-                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300 shadow-lg">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                             </svg>
                                         </div>
@@ -136,10 +142,10 @@
                                 </div>
 
                                 <!-- Phone -->
-                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-white/60 transition-all duration-300 cursor-pointer">
                                     <div class="flex-shrink-0">
-                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
-                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300 shadow-lg">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                                             </svg>
                                         </div>
@@ -153,10 +159,10 @@
                                 </div>
 
                                 <!-- WhatsApp -->
-                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-white/60 transition-all duration-300 cursor-pointer">
                                     <div class="flex-shrink-0">
-                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
-                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300 shadow-lg">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"/>
                                             </svg>
                                         </div>
@@ -170,10 +176,10 @@
                                 </div>
 
                                 <!-- Timing -->
-                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-white/60 transition-all duration-300 cursor-pointer">
                                     <div class="flex-shrink-0">
-                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
-                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300 shadow-lg">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
                                             </svg>
                                         </div>
@@ -186,10 +192,10 @@
                                 </div>
 
                                 <!-- Address -->
-                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-audiogold-50/50 transition-all duration-300 cursor-pointer transform hover:translate-x-2">
+                                <div class="group/info flex items-start space-x-4 p-4 rounded-2xl hover:bg-white/60 transition-all duration-300 cursor-pointer">
                                     <div class="flex-shrink-0">
-                                        <div class="backdrop-blur-sm bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300">
-                                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="bg-gradient-to-br from-red-500 to-rose-600 rounded-xl p-3 group-hover/info:scale-110 group-hover/info:rotate-6 transition-all duration-300 shadow-lg">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                                             </svg>
                                         </div>
@@ -204,24 +210,24 @@
 
                         <!-- Quick Stats -->
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-50 to-audiogold-100 rounded-2xl p-6 text-center border border-audiogold-200/50 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
-                                <div class="w-12 h-12 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <div class="backdrop-blur-md bg-white/80 rounded-2xl p-6 text-center border border-white/50 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                     </svg>
                                 </div>
-                                <p class="text-2xl font-bold text-audiogold-700">24hrs</p>
-                                <p class="text-sm text-gray-600">Response Time</p>
+                                <p class="text-2xl font-bold bg-gradient-to-br from-blue-600 to-cyan-600 bg-clip-text text-transparent">24hrs</p>
+                                <p class="text-sm text-gray-700 font-semibold">Response Time</p>
                             </div>
 
-                            <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-50 to-audiogold-100 rounded-2xl p-6 text-center border border-audiogold-200/50 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
-                                <div class="w-12 h-12 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <div class="backdrop-blur-md bg-white/80 rounded-2xl p-6 text-center border border-white/50 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/>
                                     </svg>
                                 </div>
-                                <p class="text-2xl font-bold text-audiogold-700">24/7</p>
-                                <p class="text-sm text-gray-600">Support</p>
+                                <p class="text-2xl font-bold bg-gradient-to-br from-purple-600 to-pink-600 bg-clip-text text-transparent">24/7</p>
+                                <p class="text-sm text-gray-700 font-semibold">Support</p>
                             </div>
                         </div>
                     </div>

@@ -11,17 +11,25 @@
         <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto text-center">
                 <div class="inline-block mb-4">
-                    <span class="text-sm font-semibold text-audiogold-600 tracking-wider uppercase">Help Center</span>
+                    <div class="backdrop-blur-sm bg-gradient-to-r from-orange-100 to-amber-100 border border-orange-200 rounded-full px-6 py-2 shadow-sm">
+                        <p class="text-sm font-semibold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent flex items-center gap-2 justify-center">
+                            <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+                            Help Center
+                        </p>
+                    </div>
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                        Frequently Asked
+                    </span>
+                    <br />
                     <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
-                        Frequently Asked Questions
+                        Questions
                     </span>
                 </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto">
                     Find answers to the most common questions about Audio Gold products and services
                 </p>
-                <div class="w-24 h-1 bg-gradient-to-r from-audiogold-500 to-audiogold-700 mx-auto rounded-full"></div>
             </div>
         </section>
 
@@ -109,12 +117,12 @@
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-3 gap-6">
                     <a href="/support" class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-audiogold-700 transition-colors duration-300">Need More Help?</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">Need More Help?</h3>
                         <p class="text-sm text-gray-600 mb-3">Visit our support center for additional assistance</p>
                         <span class="text-audiogold-600 font-semibold text-sm inline-flex items-center gap-1">
                             Get Support
@@ -125,12 +133,12 @@
                     </a>
 
                     <a href="/contact" class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-audiogold-700 transition-colors duration-300">Contact Us</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">Contact Us</h3>
                         <p class="text-sm text-gray-600 mb-3">Have a specific question? Reach out to our team</p>
                         <span class="text-audiogold-600 font-semibold text-sm inline-flex items-center gap-1">
                             Send Message
@@ -141,12 +149,12 @@
                     </a>
 
                     <a href="tel:+917011651721" class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-audiogold-700 transition-colors duration-300">Call Us</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">Call Us</h3>
                         <p class="text-sm text-gray-600 mb-3">Speak directly with our support team</p>
                         <span class="text-audiogold-600 font-semibold text-sm inline-flex items-center gap-1">
                             +91 7011651721

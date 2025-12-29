@@ -30,42 +30,42 @@
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-4 gap-6">
                     <a href="#contact-form" class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-audiogold-700 transition-colors duration-300">Email Support</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">Email Support</h3>
                         <p class="text-sm text-gray-600">Get help via email</p>
                     </a>
 
                     <a href="tel:+917011651721" class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-audiogold-700 transition-colors duration-300">Phone Support</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">Phone Support</h3>
                         <p class="text-sm text-gray-600">Call us directly</p>
                     </a>
 
                     <a href="https://wa.me/917011651721" target="_blank" class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-audiogold-700 transition-colors duration-300">WhatsApp</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">WhatsApp</h3>
                         <p class="text-sm text-gray-600">Chat with us</p>
                     </a>
 
                     <a href="#self-help" class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-audiogold-700 transition-colors duration-300">Self-Help</h3>
+                        <h3 class="font-bold text-gray-800 mb-2">Self-Help</h3>
                         <p class="text-sm text-gray-600">Browse resources</p>
                     </a>
                 </div>
@@ -88,14 +88,14 @@
                     <div class="group backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl hover:bg-white/80 transition-all duration-500 transform hover:-translate-y-2">
                         <div class="flex items-start space-x-4">
                             <div class="flex-shrink-0">
-                                <div class="w-16 h-16 bg-gradient-to-br from-audiogold-400 to-audiogold-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                                     <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                                     </svg>
                                 </div>
                             </div>
                             <div class="flex-1">
-                                <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-audiogold-700 transition-colors duration-300">Support Library</h3>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">Support Library</h3>
                                 <p class="text-gray-700 mb-4">Explore our library of product manuals, quick-start guides, and troubleshooting tips.</p>
                                 <a href="#" class="inline-flex items-center gap-2 text-audiogold-600 font-semibold hover:text-audiogold-700 transition-colors duration-200">
                                     Browse Library
@@ -110,14 +110,14 @@
                     <div class="group backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl hover:bg-white/80 transition-all duration-500 transform hover:-translate-y-2">
                         <div class="flex items-start space-x-4">
                             <div class="flex-shrink-0">
-                                <div class="w-16 h-16 bg-gradient-to-br from-audiogold-400 to-audiogold-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                                <div class="w-16 h-16 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                                     <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                                     </svg>
                                 </div>
                             </div>
                             <div class="flex-1">
-                                <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-audiogold-700 transition-colors duration-300">Knowledge Base</h3>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">Knowledge Base</h3>
                                 <p class="text-gray-700 mb-4">Find detailed articles and solutions for common issues in our comprehensive knowledge base.</p>
                                 <a href="#" class="inline-flex items-center gap-2 text-audiogold-600 font-semibold hover:text-audiogold-700 transition-colors duration-200">
                                     Visit Knowledge Base
@@ -146,8 +146,8 @@
 
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="w-12 h-12 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300">
-                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
                             </svg>
                         </div>
@@ -157,8 +157,8 @@
                     </div>
 
                     <div class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="w-12 h-12 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300">
-                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                             </svg>
                         </div>
@@ -168,8 +168,8 @@
                     </div>
 
                     <div class="group backdrop-blur-md bg-white/60 rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2">
-                        <div class="w-12 h-12 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300">
-                            <svg class="w-6 h-6 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
                             </svg>
                         </div>
@@ -218,7 +218,7 @@
                     <!-- Warranty and Repairs -->
                     <div class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500">
                         <div class="flex items-start gap-4 mb-6">
-                            <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                                 <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
                                 </svg>
@@ -265,7 +265,7 @@
                     <!-- Order Support -->
                     <div class="backdrop-blur-md bg-white/60 rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500">
                         <div class="flex items-start gap-4 mb-6">
-                            <div class="w-14 h-14 bg-gradient-to-br from-audiogold-500 to-audiogold-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <div class="w-14 h-14 bg-gradient-to-br from-fuchsia-500 to-pink-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                                 <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
@@ -406,9 +406,9 @@
                             </h3>
 
                             <div class="space-y-5">
-                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-audiogold-50/50 transition-all duration-300">
-                                    <div class="w-10 h-10 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-white/60 transition-all duration-300">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                         </svg>
                                     </div>
@@ -420,9 +420,9 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-audiogold-50/50 transition-all duration-300">
-                                    <div class="w-10 h-10 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-white/60 transition-all duration-300">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                                         </svg>
                                     </div>
@@ -434,9 +434,9 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-audiogold-50/50 transition-all duration-300">
-                                    <div class="w-10 h-10 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-white/60 transition-all duration-300">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z"/>
                                         </svg>
                                     </div>
@@ -448,9 +448,9 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-audiogold-50/50 transition-all duration-300">
-                                    <div class="w-10 h-10 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-white/60 transition-all duration-300">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
                                         </svg>
                                     </div>
@@ -460,9 +460,9 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-audiogold-50/50 transition-all duration-300">
-                                    <div class="w-10 h-10 bg-gradient-to-br from-audiogold-100 to-audiogold-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-5 h-5 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="flex items-start space-x-4 p-3 rounded-xl hover:bg-white/60 transition-all duration-300">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-rose-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                                         </svg>
                                     </div>
