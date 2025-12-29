@@ -1,170 +1,256 @@
 <template>
-    <section class="relative min-h-screen flex items-center pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-50">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div class="space-y-8 animate-fade-in-up">
-                    <!-- Badge -->
-                    <div class="inline-block">
-                        <div class="backdrop-blur-md bg-gradient-to-r from-audiogold-100 to-audiogold-200 border border-audiogold-300 rounded-full px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                            <p class="text-sm font-semibold text-audiogold-800 flex items-center gap-2">
-                                <span class="w-2 h-2 bg-audiogold-600 rounded-full animate-pulse"></span>
-                                Premium Audio Equipment
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Main Heading -->
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                        <span class="block text-gray-800 mb-2">Experience</span>
-                        <span class="block bg-gradient-to-r from-audiogold-600 via-audiogold-700 to-audiogold-800 bg-clip-text text-transparent animate-gradient">
-                            Crystal Clear Sound
-                        </span>
-                    </h1>
-
-                    <p class="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-xl">
-                        Making premium professional audio technology accessible to everyone across India.
-                    </p>
-
-                    <!-- Features List -->
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3 group">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 font-medium">Professional-grade amplifiers</p>
-                        </div>
-                        <div class="flex items-center gap-3 group">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 font-medium">Affordable premium quality</p>
-                        </div>
-                        <div class="flex items-center gap-3 group">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 font-medium">Expert support & service</p>
-                        </div>
-                    </div>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="#products"
-                           class="group px-8 py-4 bg-gradient-to-r from-audiogold-600 to-audiogold-700 text-white rounded-2xl font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            Explore Products
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                            </svg>
-                        </a>
-                        <a href="#contact"
-                           class="group px-8 py-4 backdrop-blur-md bg-white/80 text-audiogold-700 rounded-2xl font-semibold border-2 border-audiogold-400 hover:bg-audiogold-50 hover:border-audiogold-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            Get in Touch
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                            </svg>
-                        </a>
-                    </div>
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Image Slider Background -->
+        <div class="absolute inset-0">
+            <transition-group name="slide-fade">
+                <div
+                    v-for="(slide, index) in slides"
+                    :key="slide.id"
+                    v-show="currentSlide === index"
+                    class="absolute inset-0"
+                >
+                    <!-- Background Image -->
+                    <img
+                        :src="slide.image"
+                        :alt="slide.title"
+                        class="w-full h-full object-cover scale-110 animate-ken-burns"
+                    />
+                    <!-- Dark Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
                 </div>
+            </transition-group>
+        </div>
 
-                <!-- Right Visual Elements -->
-                <div class="relative lg:h-[600px] hidden lg:block">
-                    <!-- Floating Cards -->
-                    <div class="absolute top-0 right-0 w-64 backdrop-blur-md bg-white/70 rounded-3xl p-6 shadow-2xl border border-white/50 animate-float hover:shadow-3xl transition-shadow duration-300 hover:scale-105 cursor-pointer group">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-audiogold-400 to-audiogold-600 flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-                            </svg>
+        <!-- Content Overlay -->
+        <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-20">
+            <div class="max-w-7xl mx-auto">
+                <div class="relative max-w-3xl">
+                    <transition name="content-slide" mode="out-in">
+                        <div
+                            :key="`content-${slides[currentSlide].id}`"
+                            class="space-y-8"
+                        >
+                        <!-- Badge -->
+                        <div class="inline-block">
+                            <div class="backdrop-blur-md bg-white/20 border border-white/30 rounded-full px-6 py-2 shadow-xl">
+                                <p class="text-sm font-semibold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-audiogold-400 rounded-full animate-pulse"></span>
+                                    {{ slides[currentSlide].badge }}
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Premium Amplifiers</h3>
-                        <p class="text-sm text-gray-600">Professional-grade sound systems</p>
-                        <div class="mt-4 flex items-center text-audiogold-600 font-semibold text-sm group-hover:gap-2 transition-all duration-300">
-                            Learn more
-                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>
 
-                    <div class="absolute top-40 left-0 w-64 backdrop-blur-md bg-white/70 rounded-3xl p-6 shadow-2xl border border-white/50 animate-float-slow hover:shadow-3xl transition-shadow duration-300 hover:scale-105 cursor-pointer group">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-audiogold-500 to-audiogold-700 flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Quality Sound</h3>
-                        <p class="text-sm text-gray-600">Crystal-clear audio experience</p>
-                        <div class="mt-4 flex items-center text-audiogold-600 font-semibold text-sm group-hover:gap-2 transition-all duration-300">
-                            Learn more
-                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>
+                        <!-- Main Heading -->
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                            <span class="block text-white mb-2">{{ slides[currentSlide].title }}</span>
+                            <span class="block bg-gradient-to-r from-audiogold-400 via-audiogold-500 to-audiogold-600 bg-clip-text text-transparent">
+                                {{ slides[currentSlide].subtitle }}
+                            </span>
+                        </h1>
 
-                    <div class="absolute bottom-10 right-20 w-64 backdrop-blur-md bg-white/70 rounded-3xl p-6 shadow-2xl border border-white/50 animate-float-slower hover:shadow-3xl transition-shadow duration-300 hover:scale-105 cursor-pointer group">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-audiogold-600 to-audiogold-800 flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Trusted Quality</h3>
-                        <p class="text-sm text-gray-600">1000+ satisfied customers</p>
-                        <div class="mt-4 flex items-center text-audiogold-600 font-semibold text-sm group-hover:gap-2 transition-all duration-300">
-                            Learn more
-                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>
+                        <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
+                            {{ slides[currentSlide].description }}
+                        </p>
 
-                    <!-- Decorative elements -->
-                    <div class="absolute top-20 right-40 w-32 h-32 bg-gradient-to-br from-audiogold-300 to-audiogold-500 rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
-                    <div class="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-br from-audiogold-400 to-audiogold-600 rounded-full blur-3xl opacity-30 animate-pulse-slow" style="animation-delay: 1s"></div>
+                        <!-- Features List -->
+                        <div class="space-y-3">
+                            <div v-for="(feature, fIndex) in slides[currentSlide].features" :key="fIndex" class="flex items-center gap-3 group">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                                    </svg>
+                                </div>
+                                <p class="text-white font-medium">{{ feature }}</p>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <a href="/products"
+                               class="group px-8 py-4 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-2xl font-semibold hover:from-audiogold-600 hover:to-audiogold-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                                Explore Products
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                            <a href="#contact"
+                               class="group px-8 py-4 backdrop-blur-md bg-white/20 text-white rounded-2xl font-semibold border-2 border-white/40 hover:bg-white/30 hover:border-white/60 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                                Get in Touch
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        </div>
+                    </transition>
                 </div>
             </div>
         </div>
 
+        <!-- Slider Navigation Dots -->
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
+            <button
+                v-for="(slide, index) in slides"
+                :key="`dot-${slide.id}`"
+                @click="goToSlide(index)"
+                :class="[
+                    'transition-all duration-300 rounded-full',
+                    currentSlide === index
+                        ? 'w-12 h-3 bg-audiogold-500'
+                        : 'w-3 h-3 bg-white/50 hover:bg-white/80'
+                ]"
+                :aria-label="`Go to slide ${index + 1}`"
+            ></button>
+        </div>
+
+        <!-- Slider Navigation Arrows -->
+        <button
+            @click="prevSlide"
+            class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full backdrop-blur-md bg-white/20 border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+            aria-label="Previous slide"
+        >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button
+            @click="nextSlide"
+            class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full backdrop-blur-md bg-white/20 border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+            aria-label="Next slide"
+        >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
     </section>
 </template>
 
 <script setup>
-// Modern hero section with split-screen design
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const currentSlide = ref(0);
+let slideInterval = null;
+
+const slides = [
+    {
+        id: 1,
+        image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&h=1080&fit=crop&q=80',
+        badge: 'Premium Audio Equipment',
+        title: 'Experience',
+        subtitle: 'Crystal Clear Sound',
+        description: 'Making premium professional audio technology accessible to everyone across India.',
+        features: [
+            'Professional-grade amplifiers',
+            'Affordable premium quality',
+            'Expert support & service'
+        ]
+    },
+    {
+        id: 2,
+        image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1920&h=1080&fit=crop&q=80',
+        badge: 'Industry Leading',
+        title: 'Power Your',
+        subtitle: 'Sound System',
+        description: 'Advanced audio amplification solutions designed for commercial and professional applications.',
+        features: [
+            'High-power output capability',
+            'Advanced thermal management',
+            'Rack-mountable design'
+        ]
+    },
+    {
+        id: 3,
+        image: 'https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=1920&h=1080&fit=crop&q=80',
+        badge: 'Trusted by Professionals',
+        title: 'Elevate Your',
+        subtitle: 'Audio Experience',
+        description: 'Join 1000+ satisfied customers who trust AudioGold for their audio needs.',
+        features: [
+            '2-year comprehensive warranty',
+            '24/7 technical support',
+            'Pan-India service network'
+        ]
+    }
+];
+
+const nextSlide = () => {
+    currentSlide.value = (currentSlide.value + 1) % slides.length;
+};
+
+const prevSlide = () => {
+    currentSlide.value = currentSlide.value === 0 ? slides.length - 1 : currentSlide.value - 1;
+};
+
+const goToSlide = (index) => {
+    currentSlide.value = index;
+};
+
+const startAutoPlay = () => {
+    slideInterval = setInterval(() => {
+        nextSlide();
+    }, 5000); // Change slide every 5 seconds
+};
+
+const stopAutoPlay = () => {
+    if (slideInterval) {
+        clearInterval(slideInterval);
+    }
+};
+
+onMounted(() => {
+    startAutoPlay();
+});
+
+onUnmounted(() => {
+    stopAutoPlay();
+});
 </script>
 
 <style scoped>
-@keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+/* Slide Transitions */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: opacity 1s ease-in-out;
+}
+
+.slide-fade-enter-from {
+    opacity: 0;
+}
+
+.slide-fade-leave-to {
+    opacity: 0;
+}
+
+/* Content Slide Transitions */
+.content-slide-enter-active {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-slide-leave-active {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-slide-enter-from {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.content-slide-leave-to {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+/* Ken Burns Effect */
+@keyframes ken-burns {
+    0% {
+        transform: scale(1);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    100% {
+        transform: scale(1.1);
     }
 }
 
-@keyframes gradient {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-}
-
-.animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out;
-}
-
-.animate-gradient {
-    background-size: 200% auto;
-    animation: gradient 3s ease infinite;
+.animate-ken-burns {
+    animation: ken-burns 20s ease-out infinite alternate;
 }
 </style>
