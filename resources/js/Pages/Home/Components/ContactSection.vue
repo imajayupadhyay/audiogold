@@ -185,25 +185,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { useForm } from '@inertiajs/vue3';
 
-const form = ref({
+const form = useForm({
     firstName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    page_source: 'home'
 });
 
 const submitForm = () => {
-    // Handle form submission
-    console.log('Form submitted:', form.value);
-    alert('Thank you for your message! We will get back to you within 24 hours.');
-    // Reset form
-    form.value = {
-        firstName: '',
-        email: '',
-        phone: '',
-        message: ''
-    };
+    form.post(route('contact.submit'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
 };
 </script>

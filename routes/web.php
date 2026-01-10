@@ -256,5 +256,9 @@ Route::get('/about', function () {
     return Inertia::render('About/Index');
 })->name('about');
 
+// Contact Form Submissions
+Route::post('/contact/submit', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.submit');
+Route::post('/newsletter/subscribe', [App\Http\Controllers\ContactController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
+
 // Admin routes
 require __DIR__.'/admin.php';

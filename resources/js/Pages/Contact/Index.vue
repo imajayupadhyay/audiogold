@@ -238,28 +238,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 
-const form = ref({
+const form = useForm({
     firstName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    page_source: 'contact'
 });
 
 const submitForm = () => {
-    // Handle form submission
-    console.log('Form submitted:', form.value);
-    alert('Thank you for your message! We will get back to you within 24 hours.');
-    // Reset form
-    form.value = {
-        firstName: '',
-        email: '',
-        phone: '',
-        message: ''
-    };
+    form.post(route('contact.submit'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
 };
 </script>

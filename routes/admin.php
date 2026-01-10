@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,17 @@ Route::prefix('admin')->group(function () {
             'update' => 'admin.users.update',
             'destroy' => 'admin.users.destroy',
         ]);
+
+        // Inquiry Management
+        Route::get('/inquiries', [InquiryController::class, 'index'])->name('admin.inquiries.index');
+        Route::get('/inquiries/{inquiry}', [InquiryController::class, 'show'])->name('admin.inquiries.show');
+        Route::post('/inquiries/{inquiry}/toggle-read', [InquiryController::class, 'toggleRead'])->name('admin.inquiries.toggleRead');
+        Route::delete('/inquiries/{inquiry}', [InquiryController::class, 'destroy'])->name('admin.inquiries.destroy');
+
+        // Newsletter Management
+        Route::get('/newsletter', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
+        Route::post('/newsletter/{subscription}/toggle-status', [NewsletterController::class, 'toggleStatus'])->name('admin.newsletter.toggleStatus');
+        Route::delete('/newsletter/{subscription}', [NewsletterController::class, 'destroy'])->name('admin.newsletter.destroy');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

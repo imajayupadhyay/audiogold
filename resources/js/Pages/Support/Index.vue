@@ -486,7 +486,7 @@
                     <p class="text-gray-600 mb-8">Get the latest updates, tips, and product information by subscribing to our newsletter and following us on social media.</p>
                     <form @submit.prevent="subscribeNewsletter" class="max-w-md mx-auto flex gap-3">
                         <input
-                            v-model="newsletterEmail"
+                            v-model="newsletterForm.email"
                             type="email"
                             required
                             placeholder="Your email address"
@@ -494,7 +494,8 @@
                         />
                         <button
                             type="submit"
-                            class="px-6 py-3 bg-gradient-to-r from-audiogold-600 to-audiogold-700 text-white rounded-xl font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-lg"
+                            :disabled="newsletterForm.processing"
+                            class="px-6 py-3 bg-gradient-to-r from-audiogold-600 to-audiogold-700 text-white rounded-xl font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             Subscribe
                         </button>
@@ -506,34 +507,33 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 
-const form = ref({
+const form = useForm({
     firstName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    page_source: 'support'
 });
 
-const newsletterEmail = ref('');
+const newsletterForm = useForm({
+    email: ''
+});
 
 const submitForm = () => {
-    console.log('Form submitted:', form.value);
-    alert('Thank you for contacting us! Our support team will get back to you within 24 hours.');
-    form.value = {
-        firstName: '',
-        email: '',
-        phone: '',
-        message: ''
-    };
+    form.post(route('contact.submit'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
 };
 
 const subscribeNewsletter = () => {
-    console.log('Newsletter subscription:', newsletterEmail.value);
-    alert('Thank you for subscribing to our newsletter!');
-    newsletterEmail.value = '';
+    newsletterForm.post(route('newsletter.subscribe'), {
+        preserveScroll: true,
+        onSuccess: () => newsletterForm.reset(),
+    });
 };
 </script>
