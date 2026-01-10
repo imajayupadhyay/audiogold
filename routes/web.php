@@ -256,14 +256,9 @@ Route::get('/about', function () {
     return Inertia::render('About/Index');
 })->name('about');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Contact Form Submissions
+Route::post('/contact/submit', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.submit');
+Route::post('/newsletter/subscribe', [App\Http\Controllers\ContactController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+// Admin routes
+require __DIR__.'/admin.php';

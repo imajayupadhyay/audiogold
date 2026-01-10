@@ -315,6 +315,34 @@
         <!-- Contact Form Section -->
         <section id="contact-form" class="py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto">
+                <!-- Success Message -->
+                <div v-if="$page.props.flash?.success" class="mb-8 max-w-3xl mx-auto">
+                    <div class="backdrop-blur-sm bg-green-50 border-2 border-green-500 rounded-2xl p-4 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0">
+                                <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                                </svg>
+                            </div>
+                            <p class="text-green-800 font-semibold">{{ $page.props.flash.success }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div v-if="$page.props.flash?.error" class="mb-8 max-w-3xl mx-auto">
+                    <div class="backdrop-blur-sm bg-red-50 border-2 border-red-500 rounded-2xl p-4 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0">
+                                <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                </svg>
+                            </div>
+                            <p class="text-red-800 font-semibold">{{ $page.props.flash.error }}</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold mb-4">
                         <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
@@ -486,7 +514,7 @@
                     <p class="text-gray-600 mb-8">Get the latest updates, tips, and product information by subscribing to our newsletter and following us on social media.</p>
                     <form @submit.prevent="subscribeNewsletter" class="max-w-md mx-auto flex gap-3">
                         <input
-                            v-model="newsletterEmail"
+                            v-model="newsletterForm.email"
                             type="email"
                             required
                             placeholder="Your email address"
@@ -494,7 +522,8 @@
                         />
                         <button
                             type="submit"
-                            class="px-6 py-3 bg-gradient-to-r from-audiogold-600 to-audiogold-700 text-white rounded-xl font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-lg"
+                            :disabled="newsletterForm.processing"
+                            class="px-6 py-3 bg-gradient-to-r from-audiogold-600 to-audiogold-700 text-white rounded-xl font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             Subscribe
                         </button>
@@ -506,34 +535,33 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 
-const form = ref({
+const form = useForm({
     firstName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    page_source: 'support'
 });
 
-const newsletterEmail = ref('');
+const newsletterForm = useForm({
+    email: ''
+});
 
 const submitForm = () => {
-    console.log('Form submitted:', form.value);
-    alert('Thank you for contacting us! Our support team will get back to you within 24 hours.');
-    form.value = {
-        firstName: '',
-        email: '',
-        phone: '',
-        message: ''
-    };
+    form.post(route('contact.submit'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
 };
 
 const subscribeNewsletter = () => {
-    console.log('Newsletter subscription:', newsletterEmail.value);
-    alert('Thank you for subscribing to our newsletter!');
-    newsletterEmail.value = '';
+    newsletterForm.post(route('newsletter.subscribe'), {
+        preserveScroll: true,
+        onSuccess: () => newsletterForm.reset(),
+    });
 };
 </script>

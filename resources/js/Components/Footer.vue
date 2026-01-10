@@ -9,7 +9,7 @@
                 </div>
                 <form @submit.prevent="subscribe" class="max-w-md mx-auto flex gap-3">
                     <input
-                        v-model="email"
+                        v-model="newsletterForm.email"
                         type="email"
                         required
                         placeholder="Your mail here"
@@ -17,7 +17,8 @@
                     />
                     <button
                         type="submit"
-                        class="px-8 py-3 bg-gradient-to-r from-audiogold-600 to-audiogold-700 rounded-full font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-lg"
+                        :disabled="newsletterForm.processing"
+                        class="px-8 py-3 bg-gradient-to-r from-audiogold-600 to-audiogold-700 rounded-full font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Subscribe
                     </button>
@@ -116,13 +117,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { useForm } from '@inertiajs/vue3';
 
-const email = ref('');
+const newsletterForm = useForm({
+    email: ''
+});
 
 const subscribe = () => {
-    console.log('Newsletter subscription:', email.value);
-    alert('Thank you for subscribing to our newsletter!');
-    email.value = '';
+    newsletterForm.post(route('newsletter.subscribe'), {
+        preserveScroll: true,
+        onSuccess: () => newsletterForm.reset(),
+    });
 };
 </script>
