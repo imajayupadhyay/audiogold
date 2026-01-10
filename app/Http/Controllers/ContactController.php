@@ -38,8 +38,21 @@ class ContactController extends Controller
     public function subscribeNewsletter(Request $request)
     {
         $validated = $request->validate([
-            'email' => 'required|email|max:255|unique:newsletter_subscriptions,email',
+            'email' => 'required|email|max:255',
         ]);
+
+        // Check if email already exists
+        $existingSubscription = NewsletterSubscription::where('email', $validated['email'])->first();
+
+        if ($existingSubscription) {
+            if ($existingSubscription->is_subscribed) {
+                return back()->with('error', 'This email is already subscribed to our newsletter!');
+            } else {
+                // Reactivate subscription
+                $existingSubscription->update(['is_subscribed' => true]);
+                return back()->with('success', 'Welcome back! Your subscription has been reactivated.');
+            }
+        }
 
         NewsletterSubscription::create([
             'email' => $validated['email'],

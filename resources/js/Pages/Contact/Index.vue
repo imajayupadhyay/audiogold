@@ -36,6 +36,34 @@
         <!-- Main Content -->
         <section class="py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto">
+                <!-- Success Message -->
+                <div v-if="$page.props.flash?.success" class="mb-8">
+                    <div class="backdrop-blur-sm bg-green-50 border-2 border-green-500 rounded-2xl p-4 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0">
+                                <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                                </svg>
+                            </div>
+                            <p class="text-green-800 font-semibold">{{ $page.props.flash.success }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div v-if="$page.props.flash?.error" class="mb-8">
+                    <div class="backdrop-blur-sm bg-red-50 border-2 border-red-500 rounded-2xl p-4 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0">
+                                <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                </svg>
+                            </div>
+                            <p class="text-red-800 font-semibold">{{ $page.props.flash.error }}</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="grid lg:grid-cols-2 gap-12">
                     <!-- Contact Form -->
                     <div class="backdrop-blur-md bg-white/80 rounded-3xl p-8 md:p-10 shadow-2xl border border-white/50">
