@@ -1,8 +1,33 @@
 <template>
     <footer class="backdrop-blur-md bg-gray-900/95 text-white py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-            <!-- Newsletter Section -->
+        <!-- Newsletter Section -->
             <div class="backdrop-blur-sm bg-white/10 rounded-3xl p-8 md:p-12 mb-12 border border-white/20">
+                <!-- Success/Error Messages -->
+                <div v-if="showSuccess" class="mb-6 max-w-md mx-auto">
+                    <div class="bg-green-500/20 border-2 border-green-400 rounded-xl p-3 shadow-lg animate-pulse">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                            </svg>
+                            <p class="text-green-700 font-semibold text-sm">{{ successMessage }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="showError" class="mb-6 max-w-md mx-auto">
+                    <div class="backdrop-blur-sm bg-red-50 border-2 border-red-500 rounded-2xl p-4 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0">
+                                <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                </svg>
+                            </div>
+                            <p class="text-red-800 font-semibold">{{ errorMessage }}</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="text-center mb-8">
                     <h3 class="text-3xl font-bold mb-2">Subscribe Now</h3>
                     <p class="text-gray-300">Don't miss our future updates! Get Subscribed Today!</p>
@@ -117,7 +142,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
+
+const showSuccess = ref(false);
+const showError = ref(false);
+const successMessage = ref('');
+const errorMessage = ref('');
 
 const newsletterForm = useForm({
     email: ''
@@ -126,7 +157,19 @@ const newsletterForm = useForm({
 const subscribe = () => {
     newsletterForm.post(route('newsletter.subscribe'), {
         preserveScroll: true,
-        onSuccess: () => newsletterForm.reset(),
+        onSuccess: () => {
+            newsletterForm.reset();
+            showSuccess.value = true;
+            showError.value = false;
+            successMessage.value = 'Thank you for subscribing to our newsletter!';
+            setTimeout(() => { showSuccess.value = false; }, 5000);
+        },
+        onError: (errors) => {
+            showError.value = true;
+            showSuccess.value = false;
+            errorMessage.value = 'This email is already subscribed to our newsletter!';
+            setTimeout(() => { showError.value = false; }, 5000);
+        }
     });
 };
 </script>

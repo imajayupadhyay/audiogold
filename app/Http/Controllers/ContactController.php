@@ -18,7 +18,7 @@ class ContactController extends Controller
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:20',
             'message' => 'nullable|string|max:180',
-            'page_source' => 'required|in:contact,support,home',
+            'page_source' => 'required|in:contact,support,home,get_quote',
         ]);
 
         ContactInquiry::create([

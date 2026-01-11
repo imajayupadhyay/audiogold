@@ -1,22 +1,8 @@
 <template>
     <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
         <div class="max-w-7xl mx-auto relative z-10">
-            <!-- Success Message -->
-            <div v-if="$page.props.flash?.success" class="mb-8 max-w-3xl mx-auto">
-                <div class="backdrop-blur-sm bg-green-50 border-2 border-green-500 rounded-2xl p-4 shadow-lg">
-                    <div class="flex items-center gap-3">
-                        <div class="flex-shrink-0">
-                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                            </svg>
-                        </div>
-                        <p class="text-green-800 font-semibold">{{ $page.props.flash.success }}</p>
-                    </div>
-                </div>
-            </div>
-
             <!-- Error Message -->
-            <div v-if="$page.props.flash?.error" class="mb-8 max-w-3xl mx-auto">
+            <div v-if="showError" class="mb-8 max-w-3xl mx-auto">
                 <div class="backdrop-blur-sm bg-red-50 border-2 border-red-500 rounded-2xl p-4 shadow-lg">
                     <div class="flex items-center gap-3">
                         <div class="flex-shrink-0">
@@ -24,7 +10,7 @@
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                             </svg>
                         </div>
-                        <p class="text-red-800 font-semibold">{{ $page.props.flash.error }}</p>
+                        <p class="text-red-800 font-semibold">{{ errorMessage }}</p>
                     </div>
                 </div>
             </div>
@@ -209,11 +195,25 @@
         <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full blur-3xl opacity-20"></div>
         <div class="absolute bottom-20 right-10 w-64 h-64 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full blur-3xl opacity-20"></div>
         <div class="absolute top-1/2 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-100 to-amber-100 rounded-full blur-3xl opacity-10"></div>
+
+        <!-- Thank You Modal -->
+        <ThankYouModal
+            :isOpen="showModal"
+            :message="successMessage"
+            @close="closeModal"
+        />
     </section>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
+import ThankYouModal from '@/Components/ThankYouModal.vue';
+
+const showModal = ref(false);
+const showError = ref(false);
+const successMessage = ref('');
+const errorMessage = ref('');
 
 const form = useForm({
     firstName: '',
@@ -223,10 +223,25 @@ const form = useForm({
     page_source: 'home'
 });
 
+const closeModal = () => {
+    showModal.value = false;
+};
+
 const submitForm = () => {
     form.post(route('contact.submit'), {
         preserveScroll: true,
-        onSuccess: () => form.reset(),
+        onSuccess: () => {
+            form.reset();
+            showModal.value = true;
+            showError.value = false;
+            successMessage.value = 'Thank you for your message! We will get back to you within 24 hours.';
+        },
+        onError: () => {
+            showError.value = true;
+            showModal.value = false;
+            errorMessage.value = 'Something went wrong. Please try again.';
+            setTimeout(() => { showError.value = false; }, 5000);
+        }
     });
 };
 </script>

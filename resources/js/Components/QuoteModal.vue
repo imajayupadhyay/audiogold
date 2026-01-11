@@ -129,6 +129,20 @@
                         </form>
                     </div>
 
+                    <!-- Error Message -->
+                    <div v-if="showError" class="mx-8 mb-4">
+                        <div class="backdrop-blur-sm bg-red-50 border-2 border-red-500 rounded-2xl p-4 shadow-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="flex-shrink-0">
+                                    <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                    </svg>
+                                </div>
+                                <p class="text-red-800 font-semibold">{{ errorMessage }}</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Modal Footer -->
                     <div class="p-6 pt-0 border-t border-gray-200 mt-4">
                         <div class="flex items-center justify-center gap-6 text-sm text-gray-600">
@@ -150,10 +164,19 @@
             </Transition>
         </div>
     </Transition>
+
+    <!-- Thank You Modal -->
+    <ThankYouModal
+        :isOpen="showThankYouModal"
+        :message="successMessage"
+        @close="closeThankYouModal"
+    />
 </template>
 
 <script setup>
 import { ref, watch } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+import ThankYouModal from '@/Components/ThankYouModal.vue';
 
 const props = defineProps({
     show: {
@@ -164,32 +187,44 @@ const props = defineProps({
 
 const emit = defineEmits(['close']);
 
-const form = ref({
+const showThankYouModal = ref(false);
+const showError = ref(false);
+const successMessage = ref('');
+const errorMessage = ref('');
+
+const form = useForm({
     firstName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    page_source: 'get_quote'
 });
 
 const closeModal = () => {
     emit('close');
 };
 
+const closeThankYouModal = () => {
+    showThankYouModal.value = false;
+};
+
 const submitForm = () => {
-    // Handle form submission
-    console.log('Form submitted:', form.value);
-    alert('Thank you for your message! We will get back to you within 24 hours.');
-
-    // Reset form
-    form.value = {
-        firstName: '',
-        email: '',
-        phone: '',
-        message: ''
-    };
-
-    // Close modal
-    closeModal();
+    form.post(route('contact.submit'), {
+        preserveScroll: true,
+        onSuccess: () => {
+            form.reset();
+            closeModal();
+            showThankYouModal.value = true;
+            showError.value = false;
+            successMessage.value = 'Thank you for your quote request! We will get back to you within 24 hours.';
+        },
+        onError: () => {
+            showError.value = true;
+            showThankYouModal.value = false;
+            errorMessage.value = 'Something went wrong. Please try again.';
+            setTimeout(() => { showError.value = false; }, 5000);
+        }
+    });
 };
 
 // Prevent body scroll when modal is open

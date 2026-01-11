@@ -36,22 +36,8 @@
         <!-- Main Content -->
         <section class="py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto">
-                <!-- Success Message -->
-                <div v-if="$page.props.flash?.success" class="mb-8">
-                    <div class="backdrop-blur-sm bg-green-50 border-2 border-green-500 rounded-2xl p-4 shadow-lg">
-                        <div class="flex items-center gap-3">
-                            <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                                </svg>
-                            </div>
-                            <p class="text-green-800 font-semibold">{{ $page.props.flash.success }}</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Error Message -->
-                <div v-if="$page.props.flash?.error" class="mb-8">
+                <div v-if="showError" class="mb-8">
                     <div class="backdrop-blur-sm bg-red-50 border-2 border-red-500 rounded-2xl p-4 shadow-lg">
                         <div class="flex items-center gap-3">
                             <div class="flex-shrink-0">
@@ -59,7 +45,7 @@
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                                 </svg>
                             </div>
-                            <p class="text-red-800 font-semibold">{{ $page.props.flash.error }}</p>
+                            <p class="text-red-800 font-semibold">{{ errorMessage }}</p>
                         </div>
                     </div>
                 </div>
@@ -262,13 +248,27 @@
                 </div>
             </div>
         </section>
+
+        <!-- Thank You Modal -->
+        <ThankYouModal
+            :isOpen="showModal"
+            :message="successMessage"
+            @close="closeModal"
+        />
     </MainLayout>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
+import ThankYouModal from '@/Components/ThankYouModal.vue';
+
+const showModal = ref(false);
+const showError = ref(false);
+const successMessage = ref('');
+const errorMessage = ref('');
 
 const form = useForm({
     firstName: '',
@@ -278,10 +278,25 @@ const form = useForm({
     page_source: 'contact'
 });
 
+const closeModal = () => {
+    showModal.value = false;
+};
+
 const submitForm = () => {
     form.post(route('contact.submit'), {
         preserveScroll: true,
-        onSuccess: () => form.reset(),
+        onSuccess: () => {
+            form.reset();
+            showModal.value = true;
+            showError.value = false;
+            successMessage.value = 'Thank you for your message! We will get back to you within 24 hours.';
+        },
+        onError: () => {
+            showError.value = true;
+            showModal.value = false;
+            errorMessage.value = 'Something went wrong. Please try again.';
+            setTimeout(() => { showError.value = false; }, 5000);
+        }
     });
 };
 </script>
