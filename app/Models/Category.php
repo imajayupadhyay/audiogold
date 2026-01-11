@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -29,7 +31,7 @@ class Category extends Model
     /**
      * Get the parent category
      */
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
@@ -37,15 +39,23 @@ class Category extends Model
     /**
      * Get the child categories
      */
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id')->orderBy('order');
     }
 
     /**
+     * Get the products for this category
+     */
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    /**
      * Get only active child categories
      */
-    public function activeChildren()
+    public function activeChildren(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id')
             ->where('is_active', true)
