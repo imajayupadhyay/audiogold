@@ -66,19 +66,109 @@
                         <p v-if="errors.description" class="mt-2 text-sm text-red-600">{{ errors.description }}</p>
                     </div>
 
-                    <!-- Image URL -->
+                    <!-- Image Upload/URL -->
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
-                            Image URL
+                            Category Image
                         </label>
-                        <input
-                            v-model="form.image"
-                            type="url"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-audiogold-500 focus:border-transparent transition-all duration-200"
-                            placeholder="https://example.com/image.jpg"
-                        />
-                        <p class="mt-2 text-xs text-gray-500">Enter a valid URL for the category image</p>
+
+                        <!-- Image Upload -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600 mb-2">Upload Image</label>
+                            <input
+                                @change="handleImageUpload"
+                                type="file"
+                                accept="image/*"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-audiogold-500 focus:border-transparent transition-all duration-200"
+                            />
+                            <p class="mt-2 text-xs text-gray-500">Upload an image (JPEG, PNG, GIF, WebP - Max: 2MB)</p>
+                        </div>
+
+                        <!-- OR Divider -->
+                        <div class="relative my-4">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white text-gray-500">OR</span>
+                            </div>
+                        </div>
+
+                        <!-- Image URL -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2">Image URL</label>
+                            <input
+                                v-model="form.image_url"
+                                type="url"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-audiogold-500 focus:border-transparent transition-all duration-200"
+                                placeholder="https://example.com/image.jpg"
+                            />
+                            <p class="mt-2 text-xs text-gray-500">Or enter a valid URL for the category image</p>
+                        </div>
+
+                        <!-- Image Preview -->
+                        <div v-if="imagePreview" class="mt-4">
+                            <p class="text-sm font-semibold text-gray-700 mb-2">Preview:</p>
+                            <div class="w-48 h-48 rounded-lg overflow-hidden bg-gray-100 border-2 border-gray-200">
+                                <img :src="imagePreview" alt="Preview" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
                         <p v-if="errors.image" class="mt-2 text-sm text-red-600">{{ errors.image }}</p>
+                        <p v-if="errors.image_url" class="mt-2 text-sm text-red-600">{{ errors.image_url }}</p>
+                    </div>
+
+                    <!-- Icon SVG Path -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            Icon SVG Path
+                        </label>
+                        <textarea
+                            v-model="form.icon"
+                            rows="3"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-audiogold-500 focus:border-transparent transition-all duration-200 font-mono text-sm"
+                            placeholder="M13 10V3L4 14h7v7l9-11h-7z"
+                        ></textarea>
+                        <p class="mt-2 text-xs text-gray-500">Enter the SVG path data for the category icon (optional)</p>
+                        <p v-if="errors.icon" class="mt-2 text-sm text-red-600">{{ errors.icon }}</p>
+                    </div>
+
+                    <!-- Features -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            Features
+                        </label>
+                        <div class="space-y-3">
+                            <div v-for="(feature, index) in form.features" :key="index" class="flex items-center space-x-2">
+                                <input
+                                    v-model="form.features[index]"
+                                    type="text"
+                                    class="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-audiogold-500 focus:border-transparent transition-all duration-200"
+                                    :placeholder="`Feature ${index + 1}`"
+                                />
+                                <button
+                                    @click="removeFeature(index)"
+                                    type="button"
+                                    class="px-4 py-3 bg-red-100 hover:bg-red-200 text-red-700 rounded-xl transition-colors duration-200"
+                                >
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button
+                            @click="addFeature"
+                            type="button"
+                            class="mt-3 inline-flex items-center px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-xl transition-colors duration-200"
+                        >
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                            Add Feature
+                        </button>
+                        <p class="mt-2 text-xs text-gray-500">Add key features for this category</p>
+                        <p v-if="errors.features" class="mt-2 text-sm text-red-600">{{ errors.features }}</p>
                     </div>
 
                     <!-- Parent Category -->
@@ -189,7 +279,10 @@ const form = useForm({
     name: '',
     slug: '',
     description: '',
-    image: '',
+    image: null,
+    image_url: '',
+    icon: '',
+    features: [''],
     parent_id: null,
     product_count: 0,
     order: 0,
@@ -197,6 +290,32 @@ const form = useForm({
 });
 
 const processing = ref(false);
+const imagePreview = ref(null);
+
+const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        form.image = file;
+        // Create preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            imagePreview.value = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        // Clear URL if file is uploaded
+        form.image_url = '';
+    }
+};
+
+const addFeature = () => {
+    form.features.push('');
+};
+
+const removeFeature = (index) => {
+    if (form.features.length > 1) {
+        form.features.splice(index, 1);
+    }
+};
 
 const submitForm = () => {
     processing.value = true;

@@ -6,14 +6,16 @@
             class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-black shadow-2xl transition-transform duration-300 lg:translate-x-0"
         >
             <!-- Logo -->
-            <div class="flex items-center justify-between h-16 px-6 bg-black/30">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-gradient-to-br from-audiogold-500 to-orange-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">AG</span>
-                    </div>
-                    <span class="ml-3 text-white font-bold text-lg">AudioGold</span>
-                </div>
-                <button @click="toggleSidebar" class="lg:hidden text-gray-400 hover:text-white">
+            <div class="flex items-center justify-between h-20 px-6 bg-black/30">
+                <Link :href="route('admin.dashboard')" class="flex items-center space-x-3 py-2 group">
+                    <img
+                        src="/audiogold.png"
+                        alt="AudioGold Logo"
+                        class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <span class="text-white font-bold text-lg group-hover:text-audiogold-400 transition-colors duration-300">AudioGold</span>
+                </Link>
+                <button @click="toggleSidebar" class="lg:hidden text-gray-400 hover:text-white transition-colors duration-200">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>

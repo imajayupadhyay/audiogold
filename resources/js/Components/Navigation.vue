@@ -10,21 +10,15 @@
                 <div class="flex justify-between items-center h-20">
                     <!-- Logo -->
                     <div class="flex-shrink-0">
-                        <a href="/" class="flex items-center space-x-2">
-                            <svg :class="[
-                                'w-10 h-10 transition-colors duration-300',
-                                isHomePage && !isScrolled ? 'text-white' : 'text-audiogold-600'
-                            ]" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/>
-                            </svg>
-                            <span :class="[
-                                'text-2xl font-bold transition-all duration-300',
-                                isHomePage && !isScrolled
-                                    ? 'text-white'
-                                    : 'bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent'
-                            ]">
-                                AudioGold
-                            </span>
+                        <a href="/" class="group">
+                            <img
+                                src="/audiogold.png"
+                                alt="AudioGold Logo"
+                                :class="[
+                                    'h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105',
+                                    isHomePage && !isScrolled ? 'brightness-0 invert' : ''
+                                ]"
+                            />
                         </a>
                     </div>
 
@@ -270,14 +264,13 @@
             >
                 <!-- Sidebar Header -->
                 <div class="flex items-center justify-between p-6 border-b border-audiogold-200/50">
-                    <div class="flex items-center space-x-2">
-                        <svg class="w-8 h-8 text-audiogold-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/>
-                        </svg>
-                        <span class="text-xl font-bold bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
-                            AudioGold
-                        </span>
-                    </div>
+                    <a href="/" class="group">
+                        <img
+                            src="/audiogold.png"
+                            alt="AudioGold Logo"
+                            class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                    </a>
                     <button
                         @click="mobileMenuOpen = false"
                         class="p-2 rounded-full hover:bg-audiogold-50 text-gray-700 hover:text-audiogold-600 transition-all duration-200"

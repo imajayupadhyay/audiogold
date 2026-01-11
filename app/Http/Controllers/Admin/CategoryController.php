@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -48,7 +49,11 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:categories',
             'description' => 'nullable|string',
-            'image' => 'nullable|url|max:500',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image_url' => 'nullable|url|max:500',
+            'icon' => 'nullable|string',
+            'features' => 'nullable|array',
+            'features.*' => 'nullable|string|max:255',
             'parent_id' => 'nullable|exists:categories,id',
             'product_count' => 'nullable|integer|min:0',
             'order' => 'nullable|integer|min:0',
@@ -66,6 +71,35 @@ class CategoryController extends Controller
         while (Category::where('slug', $validated['slug'])->exists()) {
             $validated['slug'] = $originalSlug . '-' . $counter;
             $counter++;
+        }
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . Str::slug($validated['name']) . '.' . $image->getClientOriginalExtension();
+
+            // Store the image in public disk
+            $path = $image->storeAs('categories', $imageName, 'public');
+
+            // Generate the public URL
+            $validated['image'] = Storage::url($path);
+        } elseif (!empty($validated['image_url']) && trim($validated['image_url']) !== '') {
+            // If URL provided, use it
+            $validated['image'] = $validated['image_url'];
+        } else {
+            // No image provided
+            $validated['image'] = null;
+        }
+
+        // Remove image_url from validated data as it's not in the database
+        unset($validated['image_url']);
+
+        // Filter empty features
+        if (isset($validated['features'])) {
+            $validated['features'] = array_filter($validated['features'], function($feature) {
+                return !empty(trim($feature));
+            });
+            $validated['features'] = array_values($validated['features']); // Re-index array
         }
 
         Category::create($validated);
@@ -99,11 +133,16 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:categories,slug,' . $category->id,
             'description' => 'nullable|string',
-            'image' => 'nullable|url|max:500',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image_url' => 'nullable|url|max:500',
+            'icon' => 'nullable|string',
+            'features' => 'nullable|array',
+            'features.*' => 'nullable|string|max:255',
             'parent_id' => 'nullable|exists:categories,id',
             'product_count' => 'nullable|integer|min:0',
             'order' => 'nullable|integer|min:0',
             'is_active' => 'boolean',
+            'remove_image' => 'nullable|boolean',
         ]);
 
         // Prevent category from being its own parent
@@ -130,6 +169,51 @@ class CategoryController extends Controller
         while (Category::where('slug', $validated['slug'])->where('id', '!=', $category->id)->exists()) {
             $validated['slug'] = $originalSlug . '-' . $counter;
             $counter++;
+        }
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists and is stored locally
+            if ($category->image && !filter_var($category->image, FILTER_VALIDATE_URL)) {
+                // Extract the path from the URL
+                $oldPath = str_replace('/storage/', '', $category->image);
+                Storage::disk('public')->delete($oldPath);
+            }
+
+            $image = $request->file('image');
+            $imageName = time() . '_' . Str::slug($validated['name']) . '.' . $image->getClientOriginalExtension();
+
+            // Store the image in public disk
+            $path = $image->storeAs('categories', $imageName, 'public');
+
+            // Generate the public URL
+            $validated['image'] = Storage::url($path);
+        } elseif (!empty($validated['image_url']) && trim($validated['image_url']) !== '') {
+            // If URL provided, use it
+            $validated['image'] = $validated['image_url'];
+        } elseif ($request->input('remove_image') == true) {
+            // Delete old image if remove_image flag is set
+            if ($category->image && !filter_var($category->image, FILTER_VALIDATE_URL)) {
+                // Extract the path from the URL
+                $oldPath = str_replace('/storage/', '', $category->image);
+                Storage::disk('public')->delete($oldPath);
+            }
+            $validated['image'] = null;
+        } else {
+            // Keep existing image - don't update the image field at all
+            unset($validated['image']);
+        }
+
+        // Remove image_url and remove_image from validated data as they're not in the database
+        unset($validated['image_url']);
+        unset($validated['remove_image']);
+
+        // Filter empty features
+        if (isset($validated['features'])) {
+            $validated['features'] = array_filter($validated['features'], function($feature) {
+                return !empty(trim($feature));
+            });
+            $validated['features'] = array_values($validated['features']); // Re-index array
         }
 
         $category->update($validated);

@@ -27,8 +27,8 @@
             <!-- Categories Section -->
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                 <div class="grid md:grid-cols-3 gap-8">
-                    <a v-for="(category, index) in categories" :key="index"
-                       :href="category.link"
+                    <Link v-for="(category, index) in categories" :key="index"
+                       :href="`/products/${category.slug}`"
                        class="backdrop-blur-md bg-white/60 rounded-3xl shadow-xl border border-audiogold-200/50 overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
                         <!-- Category Image Container -->
                         <div class="relative h-64 bg-gradient-to-br from-audiogold-50 to-audiogold-100 overflow-hidden">
@@ -71,7 +71,7 @@
 
                         <!-- Hover Border Effect -->
                         <div class="absolute inset-0 rounded-3xl border-2 border-audiogold-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                    </a>
+                    </Link>
                 </div>
             </section>
 
@@ -201,53 +201,17 @@
 </template>
 
 <script setup>
+import { Link } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 
-const categories = [
-    {
-        name: 'Booster Amplifiers',
-        description: 'High-gain amplification for weak signals',
-        icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-        image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&h=400&fit=crop',
-        link: '/products/booster-amplifiers',
-        features: [
-            'Ultra-low noise floor',
-            'Wide frequency response',
-            'Adjustable gain control',
-            'Signal integrity preservation',
-            'Compact form factor'
-        ]
-    },
-    {
-        name: 'Mixer Amplifiers',
-        description: 'Combine audio sources and output together',
-        icon: 'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
-        image: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&h=400&fit=crop',
-        link: '/products/mixer-amplifiers',
-        features: [
-            'Multiple input channels',
-            'Independent volume controls',
-            'Built-in EQ per channel',
-            'Zone control capability',
-            'Professional mixing console'
-        ]
-    },
-    {
-        name: 'Power Amplifiers',
-        description: 'Deliver strong output to speakers efficiently',
-        icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
-        image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop',
-        link: '/products/power-amplifiers',
-        features: [
-            'High wattage output',
-            'Exceptional efficiency',
-            'Advanced thermal management',
-            'Bridge-mono capability',
-            'Professional-grade components'
-        ]
+// Receive categories from backend
+defineProps({
+    categories: {
+        type: Array,
+        required: true
     }
-];
+});
 
 const productFeatures = [
     {

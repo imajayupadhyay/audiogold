@@ -11,6 +11,8 @@ class Category extends Model
         'slug',
         'description',
         'image',
+        'icon',
+        'features',
         'parent_id',
         'product_count',
         'order',
@@ -21,6 +23,7 @@ class Category extends Model
         'is_active' => 'boolean',
         'product_count' => 'integer',
         'order' => 'integer',
+        'features' => 'array',
     ];
 
     /**
