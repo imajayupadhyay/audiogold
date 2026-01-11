@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Category extends Model
+{
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'image',
+        'parent_id',
+        'product_count',
+        'order',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'product_count' => 'integer',
+        'order' => 'integer',
+    ];
+
+    /**
+     * Get the parent category
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    /**
+     * Get the child categories
+     */
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id')->orderBy('order');
+    }
+
+    /**
+     * Get only active child categories
+     */
+    public function activeChildren()
+    {
+        return $this->hasMany(Category::class, 'parent_id')
+            ->where('is_active', true)
+            ->orderBy('order');
+    }
+
+    /**
+     * Scope to get only parent categories
+     */
+    public function scopeParents($query)
+    {
+        return $query->whereNull('parent_id');
+    }
+
+    /**
+     * Scope to get only active categories
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+}

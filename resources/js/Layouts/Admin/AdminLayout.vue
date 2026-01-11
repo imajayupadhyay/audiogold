@@ -68,6 +68,16 @@
                             </svg>
                             <span class="ml-3 font-medium">Newsletter</span>
                         </Link>
+                        <Link
+                            :href="route('admin.categories.index')"
+                            :class="isActive('admin.categories.*') ? 'bg-gradient-to-r from-audiogold-500 to-orange-600 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
+                            class="flex items-center px-4 py-3 rounded-xl transition-all duration-300"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                            </svg>
+                            <span class="ml-3 font-medium">Categories</span>
+                        </Link>
                         <a href="#" class="flex items-center px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-xl transition-all duration-300">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/newsletter', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
         Route::post('/newsletter/{subscription}/toggle-status', [NewsletterController::class, 'toggleStatus'])->name('admin.newsletter.toggleStatus');
         Route::delete('/newsletter/{subscription}', [NewsletterController::class, 'destroy'])->name('admin.newsletter.destroy');
+
+        // Category Management
+        Route::resource('categories', CategoryController::class)->names([
+            'index' => 'admin.categories.index',
+            'create' => 'admin.categories.create',
+            'store' => 'admin.categories.store',
+            'edit' => 'admin.categories.edit',
+            'update' => 'admin.categories.update',
+            'destroy' => 'admin.categories.destroy',
+        ]);
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });
