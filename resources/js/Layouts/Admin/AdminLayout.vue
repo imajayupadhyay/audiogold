@@ -6,14 +6,15 @@
             class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-black shadow-2xl transition-transform duration-300 lg:translate-x-0"
         >
             <!-- Logo -->
-            <div class="flex items-center justify-between h-16 px-6 bg-black/30">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-gradient-to-br from-audiogold-500 to-orange-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">AG</span>
-                    </div>
-                    <span class="ml-3 text-white font-bold text-lg">AudioGold</span>
-                </div>
-                <button @click="toggleSidebar" class="lg:hidden text-gray-400 hover:text-white">
+            <div class="flex items-center justify-between h-20 px-6 bg-black/30">
+                <Link :href="route('admin.dashboard')" class="flex items-center py-2 group">
+                    <img
+                        src="/audiogold.png"
+                        alt="AudioGold Logo"
+                        class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
+                </Link>
+                <button @click="toggleSidebar" class="lg:hidden text-gray-400 hover:text-white transition-colors duration-200">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -68,18 +69,26 @@
                             </svg>
                             <span class="ml-3 font-medium">Newsletter</span>
                         </Link>
-                        <a href="#" class="flex items-center px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-xl transition-all duration-300">
+                        <Link
+                            :href="route('admin.categories.index')"
+                            :class="isActive('admin.categories.*') ? 'bg-gradient-to-r from-audiogold-500 to-orange-600 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
+                            class="flex items-center px-4 py-3 rounded-xl transition-all duration-300"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                            </svg>
+                            <span class="ml-3 font-medium">Categories</span>
+                        </Link>
+                        <Link
+                            :href="route('admin.products.index')"
+                            :class="isActive('admin.products.*') ? 'bg-gradient-to-r from-audiogold-500 to-orange-600 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
+                            class="flex items-center px-4 py-3 rounded-xl transition-all duration-300"
+                        >
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                             </svg>
                             <span class="ml-3 font-medium">Products</span>
-                        </a>
-                        <a href="#" class="flex items-center px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-xl transition-all duration-300">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                            </svg>
-                            <span class="ml-3 font-medium">Orders</span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </nav>
