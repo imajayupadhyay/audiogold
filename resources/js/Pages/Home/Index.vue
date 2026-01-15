@@ -12,7 +12,7 @@
         </template>
 
         <!-- Hero Section -->
-        <HeroSection />
+        <HeroSection :slides="heroSlides" />
 
         <!-- About Section -->
         <AboutSection />
@@ -37,4 +37,11 @@ import AboutSection from './Components/AboutSection.vue';
 import WhyChooseSection from './Components/WhyChooseSection.vue';
 import DealerSection from './Components/DealerSection.vue';
 import ContactSection from './Components/ContactSection.vue';
+
+defineProps({
+    heroSlides: {
+        type: Array,
+        default: () => [],
+    },
+});
 </script>

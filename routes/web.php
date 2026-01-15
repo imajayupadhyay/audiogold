@@ -2,13 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home/Index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Product Routes - Dynamic from database
 Route::get('/products', [ProductController::class, 'index'])->name('products');
