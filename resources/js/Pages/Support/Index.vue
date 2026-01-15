@@ -1,5 +1,9 @@
 <template>
-    <Head title="Support - AudioGold" />
+    <Head>
+        <title>Support Center - AudioGold | Technical Help & Resources</title>
+        <meta name="description" content="Get technical support for AudioGold products. Access product manuals, troubleshooting guides, warranty information, and contact our expert support team for assistance." />
+        <meta name="keywords" content="AudioGold support, amplifier troubleshooting, product warranty, technical assistance, audio equipment help" />
+    </Head>
 
     <MainLayout>
         <!-- Background slot -->

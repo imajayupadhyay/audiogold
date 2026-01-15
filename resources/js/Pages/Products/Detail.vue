@@ -1,5 +1,9 @@
 <template>
-    <Head :title="`${product.name} - AudioGold`" />
+    <Head>
+        <title>{{ product.name }} - {{ product.categoryName }} | AudioGold</title>
+        <meta name="description" :content="`${product.name} by AudioGold. ${product.description ? product.description.substring(0, 150) : 'Premium professional audio amplifier with superior sound quality.'}... Get specifications, features & inquire now.`" />
+        <meta name="keywords" :content="`${product.name}, ${product.categoryName}, AudioGold amplifier, professional audio equipment`" />
+    </Head>
 
     <MainLayout>
         <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50">

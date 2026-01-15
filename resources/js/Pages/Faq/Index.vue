@@ -1,5 +1,9 @@
 <template>
-    <Head title="FAQ's - AudioGold" />
+    <Head>
+        <title>FAQs - Frequently Asked Questions | AudioGold</title>
+        <meta name="description" content="Find answers to common questions about AudioGold products, ordering, shipping, warranty, and dealer partnerships. Get quick help from our comprehensive FAQ section." />
+        <meta name="keywords" content="AudioGold FAQ, amplifier questions, audio equipment help, product information, warranty FAQ" />
+    </Head>
 
     <MainLayout>
         <!-- Background slot -->

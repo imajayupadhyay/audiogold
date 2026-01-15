@@ -27,34 +27,34 @@
                 <div class="relative max-w-3xl">
                     <transition name="content-slide" mode="out-in">
                         <div
-                            :key="`content-${slides[currentSlide].id}`"
+                            :key="`content-${currentSlideData.id}`"
                             class="space-y-8"
                         >
                         <!-- Badge -->
-                        <div class="inline-block">
+                        <div v-if="currentSlideData.badge" class="inline-block">
                             <div class="backdrop-blur-md bg-white/20 border border-white/30 rounded-full px-6 py-2 shadow-xl">
                                 <p class="text-sm font-semibold text-white flex items-center gap-2">
                                     <span class="w-2 h-2 bg-audiogold-400 rounded-full animate-pulse"></span>
-                                    {{ slides[currentSlide].badge }}
+                                    {{ currentSlideData.badge }}
                                 </p>
                             </div>
                         </div>
 
                         <!-- Main Heading -->
                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                            <span class="block text-white mb-2">{{ slides[currentSlide].title }}</span>
+                            <span class="block text-white mb-2">{{ currentSlideData.title }}</span>
                             <span class="block bg-gradient-to-r from-audiogold-400 via-audiogold-500 to-audiogold-600 bg-clip-text text-transparent">
-                                {{ slides[currentSlide].subtitle }}
+                                {{ currentSlideData.subtitle }}
                             </span>
                         </h1>
 
                         <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
-                            {{ slides[currentSlide].description }}
+                            {{ currentSlideData.description }}
                         </p>
 
                         <!-- Features List -->
-                        <div class="space-y-3">
-                            <div v-for="(feature, fIndex) in slides[currentSlide].features" :key="fIndex" class="flex items-center gap-3 group">
+                        <div v-if="currentSlideData.features && currentSlideData.features.length > 0" class="space-y-3">
+                            <div v-for="(feature, fIndex) in currentSlideData.features" :key="fIndex" class="flex items-center gap-3 group">
                                 <div class="w-8 h-8 rounded-full bg-gradient-to-r from-audiogold-500 to-audiogold-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                                     <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
@@ -66,16 +66,16 @@
 
                         <!-- CTA Buttons -->
                         <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                            <a href="/products"
+                            <a :href="currentSlideData.button_link || '/products'"
                                class="group px-8 py-4 bg-gradient-to-r from-audiogold-500 to-audiogold-600 text-white rounded-2xl font-semibold hover:from-audiogold-600 hover:to-audiogold-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                                Explore Products
+                                {{ currentSlideData.button_text || 'Explore Products' }}
                                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                                 </svg>
                             </a>
-                            <a href="#contact"
+                            <a v-if="currentSlideData.secondary_button_text" :href="currentSlideData.secondary_button_link || '#contact'"
                                class="group px-8 py-4 backdrop-blur-md bg-white/20 text-white rounded-2xl font-semibold border-2 border-white/40 hover:bg-white/30 hover:border-white/60 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                                Get in Touch
+                                {{ currentSlideData.secondary_button_text }}
                                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                                 </svg>
@@ -126,12 +126,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+
+const props = defineProps({
+    slides: {
+        type: Array,
+        default: () => [],
+    },
+});
 
 const currentSlide = ref(0);
 let slideInterval = null;
 
-const slides = [
+// Default slides for fallback
+const defaultSlides = [
     {
         id: 1,
         image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&h=1080&fit=crop&q=80',
@@ -143,7 +151,11 @@ const slides = [
             'Professional-grade amplifiers',
             'Affordable premium quality',
             'Expert support & service'
-        ]
+        ],
+        button_text: 'Explore Products',
+        button_link: '/products',
+        secondary_button_text: 'Get in Touch',
+        secondary_button_link: '#contact',
     },
     {
         id: 2,
@@ -156,7 +168,11 @@ const slides = [
             'High-power output capability',
             'Advanced thermal management',
             'Rack-mountable design'
-        ]
+        ],
+        button_text: 'Explore Products',
+        button_link: '/products',
+        secondary_button_text: 'Get in Touch',
+        secondary_button_link: '#contact',
     },
     {
         id: 3,
@@ -169,16 +185,30 @@ const slides = [
             '2-year comprehensive warranty',
             '24/7 technical support',
             'Pan-India service network'
-        ]
+        ],
+        button_text: 'Explore Products',
+        button_link: '/products',
+        secondary_button_text: 'Get in Touch',
+        secondary_button_link: '#contact',
     }
 ];
 
+// Use provided slides or fallback to defaults
+const slides = computed(() => {
+    return props.slides && props.slides.length > 0 ? props.slides : defaultSlides;
+});
+
+// Current slide data
+const currentSlideData = computed(() => {
+    return slides.value[currentSlide.value] || slides.value[0];
+});
+
 const nextSlide = () => {
-    currentSlide.value = (currentSlide.value + 1) % slides.length;
+    currentSlide.value = (currentSlide.value + 1) % slides.value.length;
 };
 
 const prevSlide = () => {
-    currentSlide.value = currentSlide.value === 0 ? slides.length - 1 : currentSlide.value - 1;
+    currentSlide.value = currentSlide.value === 0 ? slides.value.length - 1 : currentSlide.value - 1;
 };
 
 const goToSlide = (index) => {

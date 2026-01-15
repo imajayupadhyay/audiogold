@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\HomepageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,12 @@ Route::prefix('admin')->group(function () {
             'update' => 'admin.products.update',
             'destroy' => 'admin.products.destroy',
         ]);
+
+        // Homepage Management
+        Route::get('/homepage', [HomepageController::class, 'index'])->name('admin.homepage.index');
+        Route::post('/homepage/hero-slides', [HomepageController::class, 'storeHeroSlide'])->name('admin.homepage.hero-slides.store');
+        Route::post('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'updateHeroSlide'])->name('admin.homepage.hero-slides.update');
+        Route::delete('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'destroyHeroSlide'])->name('admin.homepage.hero-slides.destroy');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

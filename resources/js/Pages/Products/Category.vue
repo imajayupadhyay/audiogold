@@ -1,4 +1,10 @@
 <template>
+    <Head>
+        <title>{{ categoryData.name }} - Professional Amplifiers | AudioGold</title>
+        <meta name="description" :content="`Shop ${categoryData.name} at AudioGold. ${categoryData.description || 'High-quality professional audio amplifiers designed for superior performance.'} Browse our collection and get expert support.`" />
+        <meta name="keywords" :content="`${categoryData.name}, AudioGold amplifiers, professional audio, sound equipment India`" />
+    </Head>
+
     <MainLayout>
         <template #background>
             <AnimatedBackground />
@@ -68,7 +74,7 @@
                             <img v-if="product.images && product.images.length > 0"
                                  :src="product.images[0]"
                                  :alt="product.name"
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                 class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
                             />
                             <div v-else class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                                 <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,7 +174,7 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 
