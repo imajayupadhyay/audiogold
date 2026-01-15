@@ -1,4 +1,10 @@
 <template>
+    <Head>
+        <title>{{ category.name }} - Amplifier Categories | AudioGold</title>
+        <meta name="description" :content="`Explore ${category.name} subcategories at AudioGold. ${category.description || 'Find the perfect amplifier class for your audio needs.'} Professional quality, affordable prices.`" />
+        <meta name="keywords" :content="`${category.name}, amplifier types, AudioGold, professional audio equipment`" />
+    </Head>
+
     <MainLayout>
         <template #background>
             <AnimatedBackground />
@@ -133,7 +139,7 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 

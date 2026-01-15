@@ -15,15 +15,40 @@ class ProductController extends Controller
     /**
      * Display a listing of the products.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')
-            ->orderBy('order')
+        $query = Product::with('category');
+
+        // Search filter
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        // Category filter
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        // Status filter
+        if ($request->filled('status')) {
+            $query->where('is_active', $request->status === 'active');
+        }
+
+        $products = $query->orderBy('order')
             ->orderBy('name')
-            ->paginate(15);
+            ->paginate(15)
+            ->withQueryString();
+
+        $categories = Category::orderBy('name')->get(['id', 'name']);
 
         return Inertia::render('Admin/Products/Index', [
             'products' => $products,
+            'categories' => $categories,
+            'filters' => [
+                'search' => $request->search,
+                'category' => $request->category,
+                'status' => $request->status,
+            ],
         ]);
     }
 

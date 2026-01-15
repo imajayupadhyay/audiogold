@@ -1,5 +1,9 @@
 <template>
-    <Head title="Contact Us - AudioGold" />
+    <Head>
+        <title>Contact AudioGold - Get in Touch for Audio Solutions</title>
+        <meta name="description" content="Contact AudioGold for inquiries about professional audio amplifiers. Reach us via phone, email, or WhatsApp. Located in Ghaziabad, we offer nationwide support and delivery across India." />
+        <meta name="keywords" content="contact AudioGold, audio equipment inquiry, amplifier support India, AudioGold phone number" />
+    </Head>
 
     <MainLayout>
         <!-- Background slot -->

@@ -1,4 +1,10 @@
 <template>
+    <Head>
+        <title>Professional Audio Amplifiers - Browse Our Products | AudioGold</title>
+        <meta name="description" content="Explore AudioGold's complete range of professional audio amplifiers. From power amplifiers to mixing amplifiers, find the perfect solution for events, studios, and venues across India." />
+        <meta name="keywords" content="audio amplifiers, power amplifiers, professional audio equipment, sound systems India, AudioGold products" />
+    </Head>
+
     <MainLayout>
         <template #background>
             <AnimatedBackground />
@@ -32,7 +38,7 @@
                        class="backdrop-blur-md bg-white/60 rounded-3xl shadow-xl border border-audiogold-200/50 overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
                         <!-- Category Image Container -->
                         <div class="relative h-64 bg-gradient-to-br from-audiogold-50 to-audiogold-100 overflow-hidden">
-                            <img :src="category.image" :alt="category.name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                            <img :src="category.image" :alt="category.name" class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500" />
                             <!-- Gradient overlay -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
@@ -201,7 +207,7 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 

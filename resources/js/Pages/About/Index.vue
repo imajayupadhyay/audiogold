@@ -1,4 +1,10 @@
 <template>
+    <Head>
+        <title>About AudioGold - Our Story & Mission | Professional Audio Equipment</title>
+        <meta name="description" content="Learn about AudioGold's journey since 2010. We design and manufacture premium professional audio amplifiers in India, combining innovation with affordability for audiophiles and professionals." />
+        <meta name="keywords" content="about AudioGold, audio company India, amplifier manufacturer, professional audio brand" />
+    </Head>
+
     <MainLayout>
         <template #background>
             <AnimatedBackground />
@@ -206,6 +212,7 @@
 </template>
 
 <script setup>
+import { Head } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 

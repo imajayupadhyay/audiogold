@@ -1,5 +1,9 @@
 <template>
-    <Head title="AudioGold - Premium Professional Audio Equipment" />
+    <Head>
+        <title>AudioGold - Premium Professional Audio Amplifiers in India</title>
+        <meta name="description" content="AudioGold is India's leading manufacturer of professional audio amplifiers. Explore our range of high-quality power amplifiers for events, studios, and venues. Get expert support and nationwide delivery." />
+        <meta name="keywords" content="audio amplifiers, professional amplifiers, power amplifiers India, AudioGold, sound equipment, PA systems" />
+    </Head>
 
     <MainLayout>
         <!-- Background slot -->
