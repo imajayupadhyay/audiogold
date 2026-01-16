@@ -27,13 +27,6 @@
             <!-- Hero Section -->
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                 <div class="backdrop-blur-md bg-white/60 rounded-3xl p-12 shadow-xl border border-audiogold-200/50">
-                    <div class="flex items-center justify-center mb-6">
-                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-audiogold-500 to-audiogold-700 flex items-center justify-center shadow-lg">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path :d="category.icon"/>
-                            </svg>
-                        </div>
-                    </div>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6">
                         <span class="block bg-gradient-to-r from-audiogold-600 via-audiogold-700 to-audiogold-800 bg-clip-text text-transparent">
                             {{ category.name }}
@@ -60,14 +53,22 @@
                        class="backdrop-blur-md bg-white/60 rounded-3xl shadow-xl border border-audiogold-200/50 overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer">
                         <!-- Subcategory Image Container -->
                         <div class="relative h-64 bg-gradient-to-br from-audiogold-50 to-audiogold-100 overflow-hidden">
-                            <div class="absolute inset-0 flex items-center justify-center bg-white">
+                            <!-- Actual Image -->
+                            <img
+                                v-if="subcategory.image"
+                                :src="subcategory.image"
+                                :alt="subcategory.name"
+                                class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <!-- Fallback Placeholder -->
+                            <div v-else class="absolute inset-0 flex items-center justify-center bg-white">
                                 <div class="text-center p-8">
                                     <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-audiogold-400 to-audiogold-600 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
                                         <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path :d="subcategory.icon"/>
                                         </svg>
                                     </div>
-                                    <div class="text-sm text-gray-400 font-medium">Product Image</div>
+                                    <div class="text-sm text-gray-400 font-medium">No Image</div>
                                 </div>
                             </div>
                             <!-- Gradient overlay -->
