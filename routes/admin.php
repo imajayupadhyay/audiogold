@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\HomepageController;
+use App\Http\Controllers\Admin\FooterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -77,6 +78,11 @@ Route::prefix('admin')->group(function () {
         Route::post('/homepage/hero-slides', [HomepageController::class, 'storeHeroSlide'])->name('admin.homepage.hero-slides.store');
         Route::post('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'updateHeroSlide'])->name('admin.homepage.hero-slides.update');
         Route::delete('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'destroyHeroSlide'])->name('admin.homepage.hero-slides.destroy');
+
+        // Footer Management
+        Route::get('/footer', [FooterController::class, 'index'])->name('admin.footer.index');
+        Route::post('/footer', [FooterController::class, 'update'])->name('admin.footer.update');
+        Route::post('/footer/reset', [FooterController::class, 'reset'])->name('admin.footer.reset');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });
