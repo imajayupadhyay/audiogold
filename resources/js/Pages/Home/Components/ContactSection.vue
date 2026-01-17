@@ -124,8 +124,8 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-gray-700">Mail ID</p>
-                                <a href="mailto:shivamelectronics7@gmail.com" class="text-audiogold-600 hover:text-audiogold-700">
-                                    shivamelectronics7@gmail.com
+                                <a :href="'mailto:' + contactEmail" class="text-audiogold-600 hover:text-audiogold-700">
+                                    {{ contactEmail }}
                                 </a>
                             </div>
                         </div>
@@ -139,8 +139,8 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-gray-700">Contact</p>
-                                <a href="tel:+917011651721" class="text-audiogold-600 hover:text-audiogold-700">
-                                    +91 7011651721
+                                <a :href="'tel:' + contactPhone.replace(/\s/g, '')" class="text-audiogold-600 hover:text-audiogold-700">
+                                    {{ contactPhone }}
                                 </a>
                             </div>
                         </div>
@@ -154,8 +154,8 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-gray-700">WhatsApp</p>
-                                <a href="https://wa.me/917011651721" target="_blank" class="text-audiogold-600 hover:text-audiogold-700">
-                                    +91 7011651721
+                                <a :href="whatsappLink" target="_blank" class="text-audiogold-600 hover:text-audiogold-700">
+                                    {{ contactWhatsapp }}
                                 </a>
                             </div>
                         </div>
@@ -206,9 +206,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import ThankYouModal from '@/Components/ThankYouModal.vue';
+
+// Static contact information
+const contactEmail = 'shivamelectronics7@gmail.com';
+const contactPhone = '+91 7011651721';
+const contactWhatsapp = '+91 7011651721';
+
+// Computed for WhatsApp link (remove spaces and + from number)
+const whatsappLink = computed(() => {
+    const number = contactWhatsapp.replace(/[\s+]/g, '');
+    return `https://wa.me/${number}`;
+});
 
 const showModal = ref(false);
 const showError = ref(false);

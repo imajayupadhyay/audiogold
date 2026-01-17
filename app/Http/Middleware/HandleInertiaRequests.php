@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\FooterSetting;
+use App\Models\ContactPageSetting;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -35,7 +36,12 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'footerSettings' => fn () => FooterSetting::getSettings(),
+            'flash' => [
+                'success' => fn () => $request->session()->get('success'),
+                'error' => fn () => $request->session()->get('error'),
+            ],
+            'footerSettings' => FooterSetting::getSettings(),
+            'contactSettings' => ContactPageSetting::getSettings(),
         ];
     }
 }

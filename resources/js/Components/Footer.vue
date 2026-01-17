@@ -142,9 +142,14 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 
-const page = usePage();
+const props = defineProps({
+    settings: {
+        type: Object,
+        default: () => ({}),
+    },
+});
 
 // Default values
 const defaults = {
@@ -170,23 +175,21 @@ const defaults = {
 };
 
 // Computed properties with fallback to defaults
-const footerSettings = computed(() => page.props.footerSettings || {});
-
-const newsletterTitle = computed(() => footerSettings.value.newsletter_title || defaults.newsletter_title);
-const newsletterSubtitle = computed(() => footerSettings.value.newsletter_subtitle || defaults.newsletter_subtitle);
-const companyDescription = computed(() => footerSettings.value.company_description || defaults.company_description);
-const facebookUrl = computed(() => footerSettings.value.facebook_url || defaults.facebook_url);
-const twitterUrl = computed(() => footerSettings.value.twitter_url || defaults.twitter_url);
-const instagramUrl = computed(() => footerSettings.value.instagram_url || defaults.instagram_url);
-const youtubeUrl = computed(() => footerSettings.value.youtube_url || defaults.youtube_url);
+const newsletterTitle = computed(() => props.settings?.newsletter_title || defaults.newsletter_title);
+const newsletterSubtitle = computed(() => props.settings?.newsletter_subtitle || defaults.newsletter_subtitle);
+const companyDescription = computed(() => props.settings?.company_description || defaults.company_description);
+const facebookUrl = computed(() => props.settings?.facebook_url || defaults.facebook_url);
+const twitterUrl = computed(() => props.settings?.twitter_url || defaults.twitter_url);
+const instagramUrl = computed(() => props.settings?.instagram_url || defaults.instagram_url);
+const youtubeUrl = computed(() => props.settings?.youtube_url || defaults.youtube_url);
 const usefulLinks = computed(() => {
-    const links = footerSettings.value.useful_links;
+    const links = props.settings?.useful_links;
     return links && links.length > 0 ? links : defaults.useful_links;
 });
-const contactEmail = computed(() => footerSettings.value.contact_email || defaults.contact_email);
-const contactPhone = computed(() => footerSettings.value.contact_phone || defaults.contact_phone);
-const contactAddress = computed(() => footerSettings.value.contact_address || defaults.contact_address);
-const copyrightText = computed(() => footerSettings.value.copyright_text || defaults.copyright_text);
+const contactEmail = computed(() => props.settings?.contact_email || defaults.contact_email);
+const contactPhone = computed(() => props.settings?.contact_phone || defaults.contact_phone);
+const contactAddress = computed(() => props.settings?.contact_address || defaults.contact_address);
+const copyrightText = computed(() => props.settings?.copyright_text || defaults.copyright_text);
 
 const showSuccess = ref(false);
 const showError = ref(false);

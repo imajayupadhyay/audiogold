@@ -39,7 +39,8 @@ class FooterSetting extends Model
             return self::getDefaults();
         }
 
-        return $settings;
+        // Return as array for consistent frontend access
+        return $settings->toArray();
     }
 
     /**

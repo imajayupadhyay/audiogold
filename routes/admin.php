@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\FooterController;
+use App\Http\Controllers\Admin\ContactPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,6 +84,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/footer', [FooterController::class, 'index'])->name('admin.footer.index');
         Route::post('/footer', [FooterController::class, 'update'])->name('admin.footer.update');
         Route::post('/footer/reset', [FooterController::class, 'reset'])->name('admin.footer.reset');
+
+        // Contact Page Management
+        Route::get('/contact-page', [ContactPageController::class, 'index'])->name('admin.contact-page.index');
+        Route::post('/contact-page', [ContactPageController::class, 'update'])->name('admin.contact-page.update');
+        Route::post('/contact-page/reset', [ContactPageController::class, 'reset'])->name('admin.contact-page.reset');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

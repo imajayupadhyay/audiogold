@@ -39,7 +39,7 @@ class FooterController extends Controller
             'useful_links' => 'nullable|array',
             'useful_links.*.label' => 'nullable|string|max:255',
             'useful_links.*.url' => 'nullable|string|max:500',
-            'contact_email' => 'nullable|string|email|max:255',
+            'contact_email' => 'nullable|string|max:255',
             'contact_phone' => 'nullable|string|max:50',
             'contact_address' => 'nullable|string|max:500',
             'copyright_text' => 'nullable|string|max:255',
