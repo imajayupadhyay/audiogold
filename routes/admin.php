@@ -8,6 +8,11 @@ use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\HomepageController;
+use App\Http\Controllers\Admin\FooterController;
+use App\Http\Controllers\Admin\ContactPageController;
+use App\Http\Controllers\Admin\AboutPageController;
+use App\Http\Controllers\Admin\SupportPageController;
+use App\Http\Controllers\Admin\FaqPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -77,6 +82,33 @@ Route::prefix('admin')->group(function () {
         Route::post('/homepage/hero-slides', [HomepageController::class, 'storeHeroSlide'])->name('admin.homepage.hero-slides.store');
         Route::post('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'updateHeroSlide'])->name('admin.homepage.hero-slides.update');
         Route::delete('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'destroyHeroSlide'])->name('admin.homepage.hero-slides.destroy');
+        Route::post('/homepage/settings', [HomepageController::class, 'updateSettings'])->name('admin.homepage.settings.update');
+        Route::post('/homepage/settings/reset', [HomepageController::class, 'resetSettings'])->name('admin.homepage.settings.reset');
+
+        // Footer Management
+        Route::get('/footer', [FooterController::class, 'index'])->name('admin.footer.index');
+        Route::post('/footer', [FooterController::class, 'update'])->name('admin.footer.update');
+        Route::post('/footer/reset', [FooterController::class, 'reset'])->name('admin.footer.reset');
+
+        // Contact Page Management
+        Route::get('/contact-page', [ContactPageController::class, 'index'])->name('admin.contact-page.index');
+        Route::post('/contact-page', [ContactPageController::class, 'update'])->name('admin.contact-page.update');
+        Route::post('/contact-page/reset', [ContactPageController::class, 'reset'])->name('admin.contact-page.reset');
+
+        // About Page Management
+        Route::get('/about-page', [AboutPageController::class, 'index'])->name('admin.about-page.index');
+        Route::post('/about-page', [AboutPageController::class, 'update'])->name('admin.about-page.update');
+        Route::post('/about-page/reset', [AboutPageController::class, 'reset'])->name('admin.about-page.reset');
+
+        // Support Page Management
+        Route::get('/support-page', [SupportPageController::class, 'index'])->name('admin.support-page.index');
+        Route::post('/support-page', [SupportPageController::class, 'update'])->name('admin.support-page.update');
+        Route::post('/support-page/reset', [SupportPageController::class, 'reset'])->name('admin.support-page.reset');
+
+        // FAQ Page Management
+        Route::get('/faq-page', [FaqPageController::class, 'index'])->name('admin.faq-page.index');
+        Route::post('/faq-page', [FaqPageController::class, 'update'])->name('admin.faq-page.update');
+        Route::post('/faq-page/reset', [FaqPageController::class, 'reset'])->name('admin.faq-page.reset');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

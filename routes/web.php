@@ -19,15 +19,21 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/support', function () {
-    return Inertia::render('Support/Index');
+    return Inertia::render('Support/Index', [
+        'supportSettings' => \App\Models\SupportPageSetting::getSettings(),
+    ]);
 })->name('support');
 
 Route::get('/faq', function () {
-    return Inertia::render('Faq/Index');
+    return Inertia::render('Faq/Index', [
+        'faqSettings' => \App\Models\FaqPageSetting::getSettings(),
+    ]);
 })->name('faq');
 
 Route::get('/about', function () {
-    return Inertia::render('About/Index');
+    return Inertia::render('About/Index', [
+        'aboutSettings' => \App\Models\AboutPageSetting::getSettings(),
+    ]);
 })->name('about');
 
 // Contact Form Submissions

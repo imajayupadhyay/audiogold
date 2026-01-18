@@ -18,21 +18,21 @@
                     <div class="backdrop-blur-sm bg-gradient-to-r from-blue-100 to-cyan-100 border border-blue-200 rounded-full px-6 py-2 shadow-sm">
                         <p class="text-sm font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent flex items-center gap-2 justify-center">
                             <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                            Get in Touch
+                            {{ badgeText }}
                         </p>
                     </div>
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold mb-6">
                     <span class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                        Contact
+                        {{ titleLine1 }}
                     </span>
                     <br />
                     <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
-                        AudioGold
+                        {{ titleLine2 }}
                     </span>
                 </h1>
                 <p class="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                    Have a question? Fill out the form below, and we'll get back to you within 24 hours.
+                    {{ subtitle }}
                 </p>
             </div>
         </section>
@@ -153,8 +153,8 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold text-gray-700 mb-1">Mail ID</p>
-                                        <a href="mailto:shivamelectronics7@gmail.com" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200 break-all">
-                                            shivamelectronics7@gmail.com
+                                        <a :href="'mailto:' + contactEmail" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200 break-all">
+                                            {{ contactEmail }}
                                         </a>
                                     </div>
                                 </div>
@@ -170,8 +170,8 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold text-gray-700 mb-1">Contact</p>
-                                        <a href="tel:+917011651721" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200">
-                                            +91 7011651721
+                                        <a :href="'tel:' + contactPhone.replace(/\s/g, '')" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200">
+                                            {{ contactPhone }}
                                         </a>
                                     </div>
                                 </div>
@@ -187,8 +187,8 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold text-gray-700 mb-1">WhatsApp</p>
-                                        <a href="https://wa.me/917011651721" target="_blank" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200">
-                                            +91 7011651721
+                                        <a :href="whatsappLink" target="_blank" class="text-audiogold-600 hover:text-audiogold-700 transition-colors duration-200">
+                                            {{ contactWhatsapp }}
                                         </a>
                                     </div>
                                 </div>
@@ -204,8 +204,8 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold text-gray-700 mb-1">Timing</p>
-                                        <p class="text-gray-600">Monday to Saturday</p>
-                                        <p class="text-gray-600">9:00 AM – 6:00 PM</p>
+                                        <p class="text-gray-600">{{ timingDays }}</p>
+                                        <p class="text-gray-600">{{ timingHours }}</p>
                                     </div>
                                 </div>
 
@@ -220,7 +220,7 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold text-gray-700 mb-1">Address</p>
-                                        <p class="text-gray-600">A-64 Roop nagar industrial area<br>Loni Ghaziabad</p>
+                                        <p class="text-gray-600" v-html="formattedAddress"></p>
                                     </div>
                                 </div>
                             </div>
@@ -263,11 +263,53 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { Head, useForm } from '@inertiajs/vue3';
+import { ref, computed } from 'vue';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import AnimatedBackground from '@/Pages/Home/Components/AnimatedBackground.vue';
 import ThankYouModal from '@/Components/ThankYouModal.vue';
+
+const page = usePage();
+
+// Default values
+const defaults = {
+    badge_text: 'Get in Touch',
+    title_line1: 'Contact',
+    title_line2: 'AudioGold',
+    subtitle: "Have a question? Fill out the form below, and we'll get back to you within 24 hours.",
+    email: 'shivamelectronics7@gmail.com',
+    phone: '+91 7011651721',
+    whatsapp: '+91 7011651721',
+    timing_days: 'Monday to Saturday',
+    timing_hours: '9:00 AM – 6:00 PM',
+    address: 'A-64 Roop nagar industrial area, Loni Ghaziabad',
+};
+
+// Get settings from shared props
+const settings = computed(() => page.props.contactSettings || {});
+
+// Computed properties with fallback to defaults
+const badgeText = computed(() => settings.value?.badge_text || defaults.badge_text);
+const titleLine1 = computed(() => settings.value?.title_line1 || defaults.title_line1);
+const titleLine2 = computed(() => settings.value?.title_line2 || defaults.title_line2);
+const subtitle = computed(() => settings.value?.subtitle || defaults.subtitle);
+const contactEmail = computed(() => settings.value?.email || defaults.email);
+const contactPhone = computed(() => settings.value?.phone || defaults.phone);
+const contactWhatsapp = computed(() => settings.value?.whatsapp || defaults.whatsapp);
+const timingDays = computed(() => settings.value?.timing_days || defaults.timing_days);
+const timingHours = computed(() => settings.value?.timing_hours || defaults.timing_hours);
+const contactAddress = computed(() => settings.value?.address || defaults.address);
+
+// Computed for WhatsApp link (remove spaces and + from number)
+const whatsappLink = computed(() => {
+    const number = contactWhatsapp.value.replace(/[\s+]/g, '');
+    return `https://wa.me/${number}`;
+});
+
+// Computed for formatted address (replace comma with <br>)
+const formattedAddress = computed(() => {
+    return contactAddress.value.replace(/,/g, '<br>');
+});
 
 const showModal = ref(false);
 const showError = ref(false);

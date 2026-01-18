@@ -15,16 +15,16 @@
         <HeroSection :slides="heroSlides" />
 
         <!-- About Section -->
-        <AboutSection />
+        <AboutSection :settings="homepageSettings" />
 
         <!-- Why Choose Section -->
-        <WhyChooseSection />
+        <WhyChooseSection :settings="homepageSettings" />
 
         <!-- Dealer Section -->
-        <DealerSection />
+        <DealerSection :settings="homepageSettings" />
 
         <!-- Contact Section -->
-        <ContactSection />
+        <ContactSection :settings="homepageSettings" />
     </MainLayout>
 </template>
 
@@ -42,6 +42,10 @@ defineProps({
     heroSlides: {
         type: Array,
         default: () => [],
+    },
+    homepageSettings: {
+        type: Object,
+        required: true,
     },
 });
 </script>

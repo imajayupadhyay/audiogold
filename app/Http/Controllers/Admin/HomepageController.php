@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HeroSlide;
+use App\Models\HomepageSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -17,9 +18,13 @@ class HomepageController extends Controller
     public function index()
     {
         $heroSlides = HeroSlide::ordered()->get();
+        $homepageSettings = HomepageSetting::first();
+        $defaults = HomepageSetting::getDefaults();
 
         return Inertia::render('Admin/Homepage/Index', [
             'heroSlides' => $heroSlides,
+            'homepageSettings' => $homepageSettings,
+            'defaults' => $defaults,
         ]);
     }
 
@@ -138,5 +143,90 @@ class HomepageController extends Controller
 
         return redirect()->route('admin.homepage.index')
             ->with('success', 'Hero slide deleted successfully.');
+    }
+
+    /**
+     * Update homepage settings.
+     */
+    public function updateSettings(Request $request)
+    {
+        $validated = $request->validate([
+            // About Section
+            'about_badge' => 'nullable|string|max:255',
+            'about_title_line1' => 'nullable|string|max:255',
+            'about_title_line2' => 'nullable|string|max:255',
+            'about_subtitle' => 'nullable|string|max:1000',
+            'about_mission_title' => 'nullable|string|max:255',
+            'about_mission_text' => 'nullable|string|max:1000',
+            'about_story_paragraph1' => 'nullable|string|max:2000',
+            'about_story_paragraph2' => 'nullable|string|max:2000',
+            'about_key_points' => 'nullable|array',
+            'about_feature_cards' => 'nullable|array',
+            'about_cta_title' => 'nullable|string|max:255',
+            'about_cta_subtitle' => 'nullable|string|max:500',
+            'about_cta_primary_text' => 'nullable|string|max:100',
+            'about_cta_primary_link' => 'nullable|string|max:500',
+            'about_cta_secondary_text' => 'nullable|string|max:100',
+            'about_cta_secondary_link' => 'nullable|string|max:500',
+
+            // Why Choose Section
+            'why_badge' => 'nullable|string|max:255',
+            'why_title_line1' => 'nullable|string|max:255',
+            'why_title_line2' => 'nullable|string|max:255',
+            'why_subtitle' => 'nullable|string|max:1000',
+            'why_feature_cards' => 'nullable|array',
+            'why_stats' => 'nullable|array',
+
+            // Dealer Section
+            'dealer_badge' => 'nullable|string|max:255',
+            'dealer_title_line1' => 'nullable|string|max:255',
+            'dealer_title_line2' => 'nullable|string|max:255',
+            'dealer_subtitle' => 'nullable|string|max:1000',
+            'dealer_benefits' => 'nullable|array',
+            'dealer_cta_title' => 'nullable|string|max:255',
+            'dealer_cta_subtitle' => 'nullable|string|max:500',
+            'dealer_cta_primary_text' => 'nullable|string|max:100',
+            'dealer_cta_primary_link' => 'nullable|string|max:500',
+            'dealer_cta_secondary_text' => 'nullable|string|max:100',
+            'dealer_cta_secondary_link' => 'nullable|string|max:500',
+
+            // Contact Section
+            'contact_badge' => 'nullable|string|max:255',
+            'contact_title_line1' => 'nullable|string|max:255',
+            'contact_title_line2' => 'nullable|string|max:255',
+            'contact_subtitle' => 'nullable|string|max:500',
+            'contact_email' => 'nullable|string|max:255',
+            'contact_phone' => 'nullable|string|max:50',
+            'contact_whatsapp' => 'nullable|string|max:50',
+            'contact_timing_days' => 'nullable|string|max:255',
+            'contact_timing_hours' => 'nullable|string|max:255',
+            'contact_address' => 'nullable|string|max:500',
+        ]);
+
+        $homepageSettings = HomepageSetting::first();
+
+        if ($homepageSettings) {
+            $homepageSettings->update($validated);
+        } else {
+            HomepageSetting::create($validated);
+        }
+
+        return redirect()->route('admin.homepage.index')
+            ->with('success', 'Homepage settings updated successfully.');
+    }
+
+    /**
+     * Reset homepage settings to defaults.
+     */
+    public function resetSettings()
+    {
+        $homepageSettings = HomepageSetting::first();
+
+        if ($homepageSettings) {
+            $homepageSettings->delete();
+        }
+
+        return redirect()->route('admin.homepage.index')
+            ->with('success', 'Homepage settings reset to defaults.');
     }
 }

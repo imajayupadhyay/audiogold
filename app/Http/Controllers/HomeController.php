@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HeroSlide;
+use App\Models\HomepageSetting;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -28,8 +29,11 @@ class HomeController extends Controller
                 ];
             });
 
+        $homepageSettings = HomepageSetting::getSettings();
+
         return Inertia::render('Home/Index', [
             'heroSlides' => $heroSlides,
+            'homepageSettings' => $homepageSettings,
         ]);
     }
 }
