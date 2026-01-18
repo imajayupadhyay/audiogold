@@ -54,11 +54,14 @@
             <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <!-- Logo and Description -->
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <svg class="w-10 h-10 text-audiogold-500" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/>
-                        </svg>
-                        <span class="text-2xl font-bold text-white">AudioGold</span>
+                    <div class="mb-4">
+                        <a href="/">
+                            <img
+                                src="/audiogold.png"
+                                alt="AudioGold Logo"
+                                class="h-12 w-auto object-contain brightness-0 invert"
+                            />
+                        </a>
                     </div>
                     <p class="text-gray-300 mb-6">
                         {{ companyDescription }}
