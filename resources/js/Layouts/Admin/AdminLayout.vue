@@ -127,6 +127,16 @@
                             </svg>
                             <span class="ml-3 font-medium">Contact Page</span>
                         </Link>
+                        <Link
+                            :href="route('admin.about-page.index')"
+                            :class="isActive('admin.about-page.*') ? 'bg-gradient-to-r from-audiogold-500 to-orange-600 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
+                            class="flex items-center px-4 py-3 rounded-xl transition-all duration-300"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="ml-3 font-medium">About Page</span>
+                        </Link>
                     </div>
                 </div>
             </nav>

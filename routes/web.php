@@ -27,7 +27,9 @@ Route::get('/faq', function () {
 })->name('faq');
 
 Route::get('/about', function () {
-    return Inertia::render('About/Index');
+    return Inertia::render('About/Index', [
+        'aboutSettings' => \App\Models\AboutPageSetting::getSettings(),
+    ]);
 })->name('about');
 
 // Contact Form Submissions

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\ContactPageController;
+use App\Http\Controllers\Admin\AboutPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -89,6 +90,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/contact-page', [ContactPageController::class, 'index'])->name('admin.contact-page.index');
         Route::post('/contact-page', [ContactPageController::class, 'update'])->name('admin.contact-page.update');
         Route::post('/contact-page/reset', [ContactPageController::class, 'reset'])->name('admin.contact-page.reset');
+
+        // About Page Management
+        Route::get('/about-page', [AboutPageController::class, 'index'])->name('admin.about-page.index');
+        Route::post('/about-page', [AboutPageController::class, 'update'])->name('admin.about-page.update');
+        Route::post('/about-page/reset', [AboutPageController::class, 'reset'])->name('admin.about-page.reset');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

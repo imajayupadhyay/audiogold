@@ -496,32 +496,6 @@
             </div>
         </section>
 
-        <!-- Newsletter Section -->
-        <section class="py-12 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <div class="backdrop-blur-md bg-gradient-to-br from-audiogold-50 to-audiogold-100 rounded-3xl p-8 md:p-12 shadow-2xl border border-audiogold-200/50 text-center">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Stay Updated</h2>
-                    <p class="text-gray-600 mb-8">Get the latest updates, tips, and product information by subscribing to our newsletter and following us on social media.</p>
-                    <form @submit.prevent="subscribeNewsletter" class="max-w-md mx-auto flex gap-3">
-                        <input
-                            v-model="newsletterForm.email"
-                            type="email"
-                            required
-                            placeholder="Your email address"
-                            class="flex-1 px-6 py-3 rounded-xl border-2 border-audiogold-300 focus:border-audiogold-500 focus:ring-2 focus:ring-audiogold-300 outline-none bg-white"
-                        />
-                        <button
-                            type="submit"
-                            :disabled="newsletterForm.processing"
-                            class="px-6 py-3 bg-gradient-to-r from-audiogold-600 to-audiogold-700 text-white rounded-xl font-semibold hover:from-audiogold-700 hover:to-audiogold-800 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
         <!-- Thank You Modal -->
         <ThankYouModal
             :isOpen="showModal"
@@ -551,10 +525,6 @@ const form = useForm({
     page_source: 'support'
 });
 
-const newsletterForm = useForm({
-    email: ''
-});
-
 const closeModal = () => {
     showModal.value = false;
 };
@@ -577,21 +547,4 @@ const submitForm = () => {
     });
 };
 
-const subscribeNewsletter = () => {
-    newsletterForm.post(route('newsletter.subscribe'), {
-        preserveScroll: true,
-        onSuccess: () => {
-            newsletterForm.reset();
-            showModal.value = true;
-            showError.value = false;
-            successMessage.value = 'Thank you for subscribing to our newsletter!';
-        },
-        onError: (errors) => {
-            showError.value = true;
-            showModal.value = false;
-            errorMessage.value = errors.email || 'This email is already subscribed to our newsletter!';
-            setTimeout(() => { showError.value = false; }, 5000);
-        }
-    });
-};
 </script>
