@@ -25,7 +25,9 @@ Route::get('/support', function () {
 })->name('support');
 
 Route::get('/faq', function () {
-    return Inertia::render('Faq/Index');
+    return Inertia::render('Faq/Index', [
+        'faqSettings' => \App\Models\FaqPageSetting::getSettings(),
+    ]);
 })->name('faq');
 
 Route::get('/about', function () {

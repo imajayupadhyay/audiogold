@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\ContactPageController;
 use App\Http\Controllers\Admin\AboutPageController;
 use App\Http\Controllers\Admin\SupportPageController;
+use App\Http\Controllers\Admin\FaqPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,6 +102,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/support-page', [SupportPageController::class, 'index'])->name('admin.support-page.index');
         Route::post('/support-page', [SupportPageController::class, 'update'])->name('admin.support-page.update');
         Route::post('/support-page/reset', [SupportPageController::class, 'reset'])->name('admin.support-page.reset');
+
+        // FAQ Page Management
+        Route::get('/faq-page', [FaqPageController::class, 'index'])->name('admin.faq-page.index');
+        Route::post('/faq-page', [FaqPageController::class, 'update'])->name('admin.faq-page.update');
+        Route::post('/faq-page/reset', [FaqPageController::class, 'reset'])->name('admin.faq-page.reset');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });
