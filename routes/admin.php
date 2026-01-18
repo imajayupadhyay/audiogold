@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\ContactPageController;
 use App\Http\Controllers\Admin\AboutPageController;
+use App\Http\Controllers\Admin\SupportPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,6 +96,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/about-page', [AboutPageController::class, 'index'])->name('admin.about-page.index');
         Route::post('/about-page', [AboutPageController::class, 'update'])->name('admin.about-page.update');
         Route::post('/about-page/reset', [AboutPageController::class, 'reset'])->name('admin.about-page.reset');
+
+        // Support Page Management
+        Route::get('/support-page', [SupportPageController::class, 'index'])->name('admin.support-page.index');
+        Route::post('/support-page', [SupportPageController::class, 'update'])->name('admin.support-page.update');
+        Route::post('/support-page/reset', [SupportPageController::class, 'reset'])->name('admin.support-page.reset');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

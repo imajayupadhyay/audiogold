@@ -19,7 +19,9 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/support', function () {
-    return Inertia::render('Support/Index');
+    return Inertia::render('Support/Index', [
+        'supportSettings' => \App\Models\SupportPageSetting::getSettings(),
+    ]);
 })->name('support');
 
 Route::get('/faq', function () {
