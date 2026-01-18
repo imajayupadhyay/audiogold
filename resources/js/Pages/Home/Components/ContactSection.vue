@@ -21,21 +21,21 @@
                     <div class="backdrop-blur-sm bg-gradient-to-r from-blue-100 to-cyan-100 border border-blue-200 rounded-full px-6 py-2 shadow-sm">
                         <p class="text-sm font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent flex items-center gap-2 justify-center">
                             <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                            Get In Touch
+                            {{ settings.contact_badge }}
                         </p>
                     </div>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">
                     <span class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                        Have a Question?
+                        {{ settings.contact_title_line1 }}
                     </span>
                     <br />
                     <span class="bg-gradient-to-r from-audiogold-600 to-audiogold-800 bg-clip-text text-transparent">
-                        We're Here to Help
+                        {{ settings.contact_title_line2 }}
                     </span>
                 </h2>
                 <p class="text-gray-600 text-lg max-w-2xl mx-auto mt-4">
-                    Fill out the form below, and we'll get back to you within 24 hours
+                    {{ settings.contact_subtitle }}
                 </p>
             </div>
 
@@ -124,8 +124,8 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-gray-700">Mail ID</p>
-                                <a :href="'mailto:' + contactEmail" class="text-audiogold-600 hover:text-audiogold-700">
-                                    {{ contactEmail }}
+                                <a :href="'mailto:' + settings.contact_email" class="text-audiogold-600 hover:text-audiogold-700">
+                                    {{ settings.contact_email }}
                                 </a>
                             </div>
                         </div>
@@ -139,8 +139,8 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-gray-700">Contact</p>
-                                <a :href="'tel:' + contactPhone.replace(/\s/g, '')" class="text-audiogold-600 hover:text-audiogold-700">
-                                    {{ contactPhone }}
+                                <a :href="'tel:' + settings.contact_phone.replace(/\s/g, '')" class="text-audiogold-600 hover:text-audiogold-700">
+                                    {{ settings.contact_phone }}
                                 </a>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                             <div>
                                 <p class="font-semibold text-gray-700">WhatsApp</p>
                                 <a :href="whatsappLink" target="_blank" class="text-audiogold-600 hover:text-audiogold-700">
-                                    {{ contactWhatsapp }}
+                                    {{ settings.contact_whatsapp }}
                                 </a>
                             </div>
                         </div>
@@ -169,8 +169,8 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-gray-700">Timing</p>
-                                <p class="text-gray-600">Monday to Saturday</p>
-                                <p class="text-gray-600">9:00 AM – 6:00 PM</p>
+                                <p class="text-gray-600">{{ settings.contact_timing_days }}</p>
+                                <p class="text-gray-600">{{ settings.contact_timing_hours }}</p>
                             </div>
                         </div>
 
@@ -183,7 +183,7 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-gray-700">Address</p>
-                                <p class="text-gray-600">A-64 Roop nagar industrial area<br>Loni Ghaziabad</p>
+                                <p class="text-gray-600" v-html="formattedAddress"></p>
                             </div>
                         </div>
                     </div>
@@ -210,15 +210,21 @@ import { ref, computed } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import ThankYouModal from '@/Components/ThankYouModal.vue';
 
-// Static contact information
-const contactEmail = 'shivamelectronics7@gmail.com';
-const contactPhone = '+91 7011651721';
-const contactWhatsapp = '+91 7011651721';
+const props = defineProps({
+    settings: {
+        type: Object,
+        required: true,
+    },
+});
 
 // Computed for WhatsApp link (remove spaces and + from number)
 const whatsappLink = computed(() => {
-    const number = contactWhatsapp.replace(/[\s+]/g, '');
+    const number = props.settings.contact_whatsapp.replace(/[\s+]/g, '');
     return `https://wa.me/${number}`;
+});
+
+const formattedAddress = computed(() => {
+    return props.settings.contact_address.replace(/, /g, '<br>');
 });
 
 const showModal = ref(false);

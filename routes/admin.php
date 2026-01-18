@@ -82,6 +82,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/homepage/hero-slides', [HomepageController::class, 'storeHeroSlide'])->name('admin.homepage.hero-slides.store');
         Route::post('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'updateHeroSlide'])->name('admin.homepage.hero-slides.update');
         Route::delete('/homepage/hero-slides/{heroSlide}', [HomepageController::class, 'destroyHeroSlide'])->name('admin.homepage.hero-slides.destroy');
+        Route::post('/homepage/settings', [HomepageController::class, 'updateSettings'])->name('admin.homepage.settings.update');
+        Route::post('/homepage/settings/reset', [HomepageController::class, 'resetSettings'])->name('admin.homepage.settings.reset');
 
         // Footer Management
         Route::get('/footer', [FooterController::class, 'index'])->name('admin.footer.index');
